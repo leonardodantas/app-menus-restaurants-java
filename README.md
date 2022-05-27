@@ -384,7 +384,7 @@ curl -X POST "http://localhost:8080/categories/restaurants/RESTAUR-725AE" -H "ac
 
 ## Apêndice
 
-O projeto foi construido a partir do seguinte desafio https://github.com/ZXVentures/ze-code-challenges/blob/master/backend_pt.md encontrado no repositório https://github.com/CollabCodeTech/backend-challenges
+O projeto foi construido a partir do seguinte desafio [Desafio backend](https://github.com/goomerdev/job-dev-backend-interview) encontrado no repositório https://github.com/CollabCodeTech/backend-challenges
 
 
 ### :sunglasses: Autor
