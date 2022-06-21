@@ -1,5 +1,6 @@
 package com.br.rank.list.app.usecases.impl;
 
+import com.br.rank.list.app.messages.ISendProductMessage;
 import com.br.rank.list.app.repositories.IProductRepository;
 import com.br.rank.list.app.usecases.ICreateProduct;
 import com.br.rank.list.app.usecases.IGetRestaurantOrThrowNotFound;
@@ -14,11 +15,13 @@ public class CreateProduct implements ICreateProduct {
     private final IProductRepository productRepository;
     private final IGetRestaurantOrThrowNotFound getRestaurantOrThrowNotFound;
     private final ApplicationEventPublisher applicationEventPublisher;
+    private final ISendProductMessage sendProductMessage;
 
-    public CreateProduct(final IProductRepository productRepository, final IGetRestaurantOrThrowNotFound getRestaurantOrThrowNotFound, final ApplicationEventPublisher applicationEventPublisher) {
+    public CreateProduct(final IProductRepository productRepository, final IGetRestaurantOrThrowNotFound getRestaurantOrThrowNotFound, final ApplicationEventPublisher applicationEventPublisher, final ISendProductMessage sendProductMessage) {
         this.productRepository = productRepository;
         this.getRestaurantOrThrowNotFound = getRestaurantOrThrowNotFound;
         this.applicationEventPublisher = applicationEventPublisher;
+        this.sendProductMessage = sendProductMessage;
     }
 
     @Override
@@ -26,6 +29,8 @@ public class CreateProduct implements ICreateProduct {
     public Product execute(final Product product) {
         getRestaurantOrThrowNotFound.execute(product.getCode());
         applicationEventPublisher.publishEvent(product);
-        return productRepository.save(product);
+        final var productSave = productRepository.save(product);
+        sendProductMessage.execute(productSave);
+        return productSave;
     }
 }

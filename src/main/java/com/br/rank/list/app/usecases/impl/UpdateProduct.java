@@ -1,6 +1,7 @@
 package com.br.rank.list.app.usecases.impl;
 
 import com.br.rank.list.app.exceptions.ProductNotFoundException;
+import com.br.rank.list.app.messages.ISendProductMessage;
 import com.br.rank.list.app.repositories.IProductRepository;
 import com.br.rank.list.app.usecases.IGetRestaurantOrThrowNotFound;
 import com.br.rank.list.app.usecases.IUpdateProduct;
@@ -15,11 +16,13 @@ public class UpdateProduct implements IUpdateProduct {
     private final IProductRepository productRepository;
     private final IGetRestaurantOrThrowNotFound getRestaurantOrThrowNotFound;
     private final ApplicationEventPublisher applicationEventPublisher;
+    private final ISendProductMessage sendProductMessage;
 
-    public UpdateProduct(final IProductRepository productRepository, final IGetRestaurantOrThrowNotFound getRestaurantOrThrowNotFound, final ApplicationEventPublisher applicationEventPublisher) {
+    public UpdateProduct(final IProductRepository productRepository, final IGetRestaurantOrThrowNotFound getRestaurantOrThrowNotFound, final ApplicationEventPublisher applicationEventPublisher, final ISendProductMessage sendProductMessage) {
         this.productRepository = productRepository;
         this.getRestaurantOrThrowNotFound = getRestaurantOrThrowNotFound;
         this.applicationEventPublisher = applicationEventPublisher;
+        this.sendProductMessage = sendProductMessage;
     }
 
     @Override
@@ -32,5 +35,6 @@ public class UpdateProduct implements IUpdateProduct {
 
         applicationEventPublisher.publishEvent(productSave);
         applicationEventPublisher.publishEvent(RestaurantCode.from(productSave.getCode()));
+        sendProductMessage.execute(productSave);
     }
 }
