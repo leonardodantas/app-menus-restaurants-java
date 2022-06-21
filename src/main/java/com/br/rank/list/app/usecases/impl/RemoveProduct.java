@@ -1,34 +1,27 @@
 package com.br.rank.list.app.usecases.impl;
 
-import com.br.rank.list.app.messages.IRemoveProductMessage;
 import com.br.rank.list.app.repositories.IProductRepository;
 import com.br.rank.list.app.usecases.IGetRestaurantOrThrowNotFound;
 import com.br.rank.list.app.usecases.IRemoveProduct;
-import com.br.rank.list.domains.RestaurantCode;
-import org.springframework.context.ApplicationEventPublisher;
+import com.br.rank.list.app.usecases.IRemoveProductEvents;
 import org.springframework.stereotype.Service;
 
 @Service
 public class RemoveProduct implements IRemoveProduct {
 
     private final IProductRepository productRepository;
-    private final ApplicationEventPublisher applicationEventPublisher;
     private final IGetRestaurantOrThrowNotFound getRestaurantOrThrowNotFound;
+    private final IRemoveProductEvents removeProductEvents;
 
-    private final IRemoveProductMessage removeProductMessage;
-
-    public RemoveProduct(final IProductRepository productRepository, final ApplicationEventPublisher applicationEventPublisher, final IGetRestaurantOrThrowNotFound getRestaurantOrThrowNotFound, final IRemoveProductMessage removeProductMessage) {
+    public RemoveProduct(final IProductRepository productRepository, final IGetRestaurantOrThrowNotFound getRestaurantOrThrowNotFound, final IRemoveProductEvents removeProductEvents) {
         this.productRepository = productRepository;
-        this.applicationEventPublisher = applicationEventPublisher;
         this.getRestaurantOrThrowNotFound = getRestaurantOrThrowNotFound;
-        this.removeProductMessage = removeProductMessage;
+        this.removeProductEvents = removeProductEvents;
     }
 
     @Override
     public void execute(final String id, final String code) {
         getRestaurantOrThrowNotFound.execute(code);
         productRepository.removeById(id);
-        applicationEventPublisher.publishEvent(RestaurantCode.from(code));
-        removeProductMessage.execute(id);
     }
 }
