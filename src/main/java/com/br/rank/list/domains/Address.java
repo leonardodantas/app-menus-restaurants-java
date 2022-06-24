@@ -5,8 +5,8 @@ import lombok.Getter;
 
 import java.io.Serializable;
 
-@Builder
 @Getter
+@Builder
 public class Address implements Serializable {
     private String street;
     private String number;

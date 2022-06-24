@@ -1,18 +1,16 @@
 package com.br.rank.list.domains;
 
+import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
 @Getter
-@NoArgsConstructor
-@Document("restaurantCategories")
+@Builder
 public class RestaurantCategories {
 
     @Id
@@ -49,7 +47,7 @@ public class RestaurantCategories {
         return new RestaurantCategories(id, code, Categories.from(categories));
     }
 
-    public Collection<String> getValues(){
+    public Collection<String> getValues() {
         return categories.getValues();
     }
 }

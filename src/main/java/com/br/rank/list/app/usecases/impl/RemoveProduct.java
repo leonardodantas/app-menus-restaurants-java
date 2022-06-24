@@ -23,5 +23,6 @@ public class RemoveProduct implements IRemoveProduct {
     public void execute(final String id, final String code) {
         getRestaurantOrThrowNotFound.execute(code);
         productRepository.removeById(id);
+        removeProductEvents.execute(id, code);
     }
 }

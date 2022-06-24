@@ -1,20 +1,17 @@
 package com.br.rank.list.domains;
 
+import com.br.rank.list.app.exceptions.TimeBetweenHoursException;
 import lombok.Builder;
 import lombok.Getter;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
 import java.time.Duration;
 import java.time.LocalTime;
 
-@Builder
 @Getter
-@Document("restaurant")
+@Builder
 public class Restaurant implements Serializable {
 
-    @Id
     private String id;
     private String code;
     private CNPJ cnpj;
@@ -70,8 +67,14 @@ public class Restaurant implements Serializable {
         return this;
     }
 
-    public long getOperatingTime(){
+    private long getOperatingTime() {
         return Duration.between(getOpeningHours().getStartTime(), getOpeningHours().getEndTime()).toMinutes();
+    }
+
+    public void operationTimeIsValid() {
+        if (this.getOperatingTime() < 15) {
+            throw TimeBetweenHoursException.from("Operation time restaurant " + this.name + " is less than 15 minutes");
+        }
     }
 
 }

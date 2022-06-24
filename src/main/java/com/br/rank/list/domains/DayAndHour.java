@@ -7,8 +7,8 @@ import java.io.Serializable;
 import java.time.Duration;
 import java.time.LocalTime;
 
-@Builder
 @Getter
+@Builder
 public class DayAndHour implements Serializable {
 
     private Days day;

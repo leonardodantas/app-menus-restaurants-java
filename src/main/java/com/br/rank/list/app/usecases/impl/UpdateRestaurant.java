@@ -20,6 +20,7 @@ public class UpdateRestaurant implements IUpdateRestaurant {
         final var restaurantToUpdate = restaurantRepository.findById(id)
                 .orElseThrow(() -> RestaurantNotFoundException.from("Restaurant not found"));
 
+        restaurant.operationTimeIsValid();
         restaurantToUpdate.updateFrom(restaurant);
 
         return restaurantRepository.save(restaurantToUpdate);

@@ -1,12 +1,12 @@
 package com.br.rank.list.domains;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 @Getter
-@NoArgsConstructor
-@Document("searchRestaurant")
+@Builder
+@AllArgsConstructor
 public class SearchRestaurant {
 
     private String id;

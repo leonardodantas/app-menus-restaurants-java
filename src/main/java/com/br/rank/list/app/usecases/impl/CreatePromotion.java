@@ -5,7 +5,6 @@ import com.br.rank.list.app.repositories.IProductRepository;
 import com.br.rank.list.app.repositories.IRestaurantRepository;
 import com.br.rank.list.app.usecases.ICreatePromotion;
 import com.br.rank.list.app.usecases.IGetProductOrThrowNotFound;
-import com.br.rank.list.app.validators.IValidateTimeBetweenHours;
 import com.br.rank.list.domains.Product;
 import com.br.rank.list.domains.Promotion;
 import org.springframework.stereotype.Service;
@@ -32,7 +31,7 @@ public class CreatePromotion implements ICreatePromotion {
 
     private void validateDaysPromotion(final Product product, final Promotion promotion) {
         final var promotions = product.getPromotion();
-        IValidateTimeBetweenHours.valid(promotion);
+        promotions.operationTimeIsValid();
 
         promotions.getDayAndHours()
                 .stream().filter(existingPromotions -> promotion

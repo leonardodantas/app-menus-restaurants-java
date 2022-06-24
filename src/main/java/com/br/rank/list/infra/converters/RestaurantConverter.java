@@ -1,9 +1,6 @@
 package com.br.rank.list.infra.converters;
 
-import com.br.rank.list.domains.Address;
-import com.br.rank.list.domains.CNPJ;
-import com.br.rank.list.domains.OperatingHours;
-import com.br.rank.list.domains.Restaurant;
+import com.br.rank.list.domains.*;
 import com.br.rank.list.infra.jsons.requests.AddressRequestJson;
 import com.br.rank.list.infra.jsons.requests.OperatingHoursRequestJson;
 import com.br.rank.list.infra.jsons.requests.RestaurantRequestJson;
@@ -20,6 +17,7 @@ public class RestaurantConverter {
                 .cnpj(CNPJ.from(json.cnpj()))
                 .name(json.name())
                 .address(toDomain(json.address()))
+                .delivery(Delivery.builder().build())
                 .openingHours(toDomain(json.operatingHours()))
                 .active(true)
                 .build();

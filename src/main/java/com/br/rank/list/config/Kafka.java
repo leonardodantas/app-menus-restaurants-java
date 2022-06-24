@@ -34,7 +34,7 @@ public class Kafka {
                 JsonSerializer.class);
         props.put(
                 ProducerConfig.CLIENT_ID_CONFIG,
-                "shop-api");
+                "menus-restaurants");
         return new DefaultKafkaProducerFactory<>(props);
     }
 

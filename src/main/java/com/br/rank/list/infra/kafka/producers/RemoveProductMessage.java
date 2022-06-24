@@ -1,4 +1,4 @@
-package com.br.rank.list.infra.kafka;
+package com.br.rank.list.infra.kafka.producers;
 
 import com.br.rank.list.app.messages.IRemoveProductMessage;
 import org.springframework.kafka.core.KafkaTemplate;

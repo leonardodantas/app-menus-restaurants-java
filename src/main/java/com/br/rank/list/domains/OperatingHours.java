@@ -6,10 +6,9 @@ import lombok.Getter;
 import java.io.Serializable;
 import java.time.LocalTime;
 
-@Builder
 @Getter
+@Builder
 public class OperatingHours implements Serializable {
-
     private LocalTime startTime;
     private LocalTime endTime;
 }

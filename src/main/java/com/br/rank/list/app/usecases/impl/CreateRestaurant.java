@@ -2,7 +2,6 @@ package com.br.rank.list.app.usecases.impl;
 
 import com.br.rank.list.app.repositories.IRestaurantRepository;
 import com.br.rank.list.app.usecases.ICreateRestaurant;
-import com.br.rank.list.app.validators.IValidateTimeBetweenHours;
 import com.br.rank.list.domains.Restaurant;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.context.ApplicationEventPublisher;
@@ -22,7 +21,7 @@ public class CreateRestaurant implements ICreateRestaurant {
     @Override
     @CacheEvict(value = "restaurants", allEntries = true)
     public Restaurant execute(final Restaurant restaurant) {
-        IValidateTimeBetweenHours.valid(restaurant);
+        restaurant.operationTimeIsValid();
         final var restaurantSave = this.restaurantRepository.save(restaurant);
         this.applicationEventPublisher.publishEvent(restaurant);
         return restaurantSave;

@@ -1,25 +1,17 @@
 package com.br.rank.list.domains;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 @Getter
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor
-@Document("products")
 public class Product implements Serializable {
 
     private String id;
@@ -29,6 +21,7 @@ public class Product implements Serializable {
     private Categories categories;
     private boolean promotionActive;
     private Promotion promotion;
+    private SearchInformation searchInformation;
 
     public static Product createPromotionOf(final Product product, final Promotion promotion) {
         return new Product(
@@ -38,21 +31,18 @@ public class Product implements Serializable {
                 product.getPrice(),
                 product.getCategories(),
                 true,
-                promotion
+                promotion,
+                product.getSearchInformation()
         );
     }
 
     public static Product of(final Product product, final Collection<DayAndHour> daysAndHours) {
-        return new Product(product.getId(), product.getCode(), product.getName(), product.getPrice(), product.getCategories(), true, Promotion.of(product.getPromotion(), daysAndHours));
-    }
-
-    public Product fromId(final String id) {
-        return new Product(id, this.code, this.name, this.price, this.categories, this.promotionActive, this.promotion);
+        return new Product(product.getId(), product.getCode(), product.getName(), product.getPrice(), product.getCategories(), true, Promotion.of(product.getPromotion(), daysAndHours), SearchInformation.builder().build());
     }
 
     public void removePromotion() {
         this.promotionActive = false;
-        this.promotion = Promotion.builder().build();
+        this.promotion = new Promotion();
     }
 
 
@@ -79,7 +69,33 @@ public class Product implements Serializable {
                 }).findFirst();
     }
 
-    public void applyPromotion() {
+    private void applyPromotion() {
         this.price = promotion.getPromotionalPrice();
+    }
+
+    public Product updateSearch(final SearchInformation searchInformation) {
+        return new Product(
+                this.id,
+                this.code,
+                this.name,
+                this.price,
+                this.categories,
+                this.promotionActive,
+                this.promotion,
+                searchInformation
+        );
+    }
+
+    public Product updateId(final String id) {
+        return new Product(
+                id,
+                this.code,
+                this.name,
+                this.price,
+                this.categories,
+                this.promotionActive,
+                this.promotion,
+                this.searchInformation
+        );
     }
 }

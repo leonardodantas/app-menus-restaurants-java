@@ -1,4 +1,4 @@
-package com.br.rank.list.infra.kafka;
+package com.br.rank.list.infra.kafka.producers;
 
 import com.br.rank.list.app.messages.ISendProductMessage;
 import com.br.rank.list.domains.Product;
