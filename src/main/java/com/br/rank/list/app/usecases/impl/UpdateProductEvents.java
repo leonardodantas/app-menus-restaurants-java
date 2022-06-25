@@ -1,7 +1,6 @@
 package com.br.rank.list.app.usecases.impl;
 
 import com.br.rank.list.app.messages.ISendProductMessage;
-import com.br.rank.list.app.usecases.ICreateProductEvents;
 import com.br.rank.list.app.usecases.IUpdateProductEvents;
 import com.br.rank.list.domains.Product;
 import com.br.rank.list.domains.RestaurantCode;
@@ -22,7 +21,7 @@ public class UpdateProductEvents implements IUpdateProductEvents {
     @Override
     public void execute(final Product product) {
         applicationEventPublisher.publishEvent(product);
-        applicationEventPublisher.publishEvent(RestaurantCode.from(product.getCode()));
+        applicationEventPublisher.publishEvent(new RestaurantCode(product.getCode()));
         sendProductMessage.execute(product);
     }
 }

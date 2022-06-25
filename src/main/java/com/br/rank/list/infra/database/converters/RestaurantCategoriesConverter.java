@@ -7,10 +7,7 @@ import com.br.rank.list.infra.database.documents.RestaurantCategoriesDocument;
 public class RestaurantCategoriesConverter {
 
     public static RestaurantCategories toDomain(final RestaurantCategoriesDocument document) {
-        return RestaurantCategories.builder()
-                .id(document.id())
-                .categories(Categories.from(document.values()))
-                .code(document.code())
-                .build();
+        return RestaurantCategories.of(document.id(),
+                document.code(), Categories.from(document.values()));
     }
 }

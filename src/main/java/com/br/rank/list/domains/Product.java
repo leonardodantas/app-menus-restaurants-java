@@ -1,6 +1,6 @@
 package com.br.rank.list.domains;
 
-import lombok.Builder;
+import com.br.rank.list.app.exceptions.PromotionAlreadyExistException;
 import lombok.Getter;
 
 import java.io.Serializable;
@@ -11,8 +11,7 @@ import java.util.Collection;
 import java.util.Optional;
 
 @Getter
-@Builder
-public class Product implements Serializable {
+public final class Product implements Serializable {
 
     private String id;
     private String code;
@@ -23,7 +22,19 @@ public class Product implements Serializable {
     private Promotion promotion;
     private SearchInformation searchInformation;
 
+    private Product(final String id, final String code, final String name, final BigDecimal price, final Categories categories, final boolean promotionActive, final Promotion promotion, final SearchInformation searchInformation) {
+        this.id = id;
+        this.code = code;
+        this.name = name;
+        this.price = price;
+        this.categories = categories;
+        this.promotionActive = promotionActive;
+        this.promotion = promotion;
+        this.searchInformation = searchInformation;
+    }
+
     public static Product createPromotionOf(final Product product, final Promotion promotion) {
+        validateDaysPromotion(product.getPromotion(), promotion);
         return new Product(
                 product.getId(),
                 product.getCode(),
@@ -36,17 +47,29 @@ public class Product implements Serializable {
         );
     }
 
+    private static void validateDaysPromotion(final Promotion newPromotion, final Promotion promotionActual) {
+        promotionActual.getDayAndHours()
+                .stream().filter(existingPromotions -> newPromotion
+                        .getDayAndHours()
+                        .stream()
+                        .anyMatch(newPromotions -> newPromotions.getDay().equals(existingPromotions.getDay())))
+                .findFirst()
+                .ifPresent(p -> {
+                    throw PromotionAlreadyExistException.from("Promotion already exists to day " + p.getDay());
+                });
+    }
+
     public static Product of(final Product product, final Collection<DayAndHour> daysAndHours) {
-        return new Product(product.getId(), product.getCode(), product.getName(), product.getPrice(), product.getCategories(), true, Promotion.of(product.getPromotion(), daysAndHours), SearchInformation.builder().build());
+        return new Product(product.getId(), product.getCode(), product.getName(), product.getPrice(), product.getCategories(), true, Promotion.of(product.getPromotion(), daysAndHours), SearchInformation.noSearchInformation());
     }
 
     public void removePromotion() {
         this.promotionActive = false;
-        this.promotion = new Promotion();
+        this.promotion = Promotion.noPromotion();
     }
 
 
-    public void removePromotion(final DayAndHour dayAndHour) {
+    public void removePromotionOf(final DayAndHour dayAndHour) {
         this.promotion.getDayAndHours().remove(dayAndHour);
         if (promotion.getDayAndHours().size() == 0) {
             this.removePromotion();
@@ -61,7 +84,7 @@ public class Product implements Serializable {
 
     private Optional<DayAndHour> checkForPromotion() {
         return Optional.ofNullable(this.getPromotion())
-                .orElse(new Promotion())
+                .orElse(Promotion.noPromotion())
                 .getDayAndHours()
                 .stream().filter(dayAndHour -> {
                     final var day = DayOfWeek.from(LocalDate.now()).name();
@@ -97,5 +120,58 @@ public class Product implements Serializable {
                 this.promotion,
                 this.searchInformation
         );
+    }
+
+    public static Builder builder(final String name, final String code, final Categories categories, final BigDecimal price) {
+        return new Builder(name, code, categories, price);
+    }
+
+    public static class Builder {
+
+        private String id;
+        private final String name;
+        private final String code;
+        private final Categories categories;
+        private final BigDecimal price;
+        private boolean promotionActive;
+        private Promotion promotion;
+        private SearchInformation searchInformation;
+
+        public Builder(final String name, final String code, final Categories categories, final BigDecimal price) {
+            this.name = name;
+            this.code = code;
+            this.categories = categories;
+            this.price = price;
+            this.promotionActive = false;
+            this.promotion = Promotion.noPromotion();
+            this.searchInformation = SearchInformation.noSearchInformation();
+        }
+
+        public Builder id(final String id) {
+            this.id = id;
+            return this;
+        }
+
+
+        public Builder promotion(final Promotion promotion) {
+            this.promotion = promotion;
+            return this;
+        }
+
+
+        public Builder promotionActive(final boolean promotionActive) {
+            this.promotionActive = promotionActive;
+            return this;
+        }
+
+
+        public Builder searchInformation(final SearchInformation searchInformation) {
+            this.searchInformation = searchInformation;
+            return this;
+        }
+
+        public Product build() {
+            return new Product(id, name, code, price, categories, promotionActive, promotion, searchInformation);
+        }
     }
 }

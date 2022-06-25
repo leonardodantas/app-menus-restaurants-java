@@ -1,6 +1,5 @@
 package com.br.rank.list.domains;
 
-import lombok.Builder;
 import lombok.Getter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -10,8 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Getter
-@Builder
-public class RestaurantCategories {
+public final class RestaurantCategories {
 
     @Id
     private String id;
@@ -32,6 +30,10 @@ public class RestaurantCategories {
 
     public static RestaurantCategories from(final Product product) {
         return new RestaurantCategories(product);
+    }
+
+    public static RestaurantCategories of(final String id, final String code, final Categories categories) {
+        return new RestaurantCategories(id, code, categories);
     }
 
     public void addCategories(final Categories newCategories) {

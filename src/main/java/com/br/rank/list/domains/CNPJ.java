@@ -5,7 +5,7 @@ import lombok.Getter;
 import java.io.Serializable;
 
 @Getter
-public class CNPJ implements Serializable {
+public final class CNPJ implements Serializable {
 
     private String cnpj;
     private String cnpjOnlyNumbers;

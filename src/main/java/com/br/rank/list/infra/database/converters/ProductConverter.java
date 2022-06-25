@@ -8,12 +8,8 @@ import com.br.rank.list.infra.database.documents.SearchInformationDocument;
 public class ProductConverter {
 
     public static Product toDomain(final ProductDocument productDocument) {
-        return Product.builder()
+        return Product.builder(productDocument.name(), productDocument.code(), Categories.from(productDocument.categoriesValues()), productDocument.price())
                 .id(productDocument.id())
-                .code(productDocument.code())
-                .name(productDocument.name())
-                .price(productDocument.price())
-                .categories(Categories.from(productDocument.categoriesValues()))
                 .promotionActive(productDocument.promotionActive())
                 .promotion(toDomain(productDocument.promotion()))
                 .searchInformation(toDomain(productDocument.searchInformation()))
@@ -22,25 +18,15 @@ public class ProductConverter {
 
     private static Promotion toDomain(final PromotionDocument promotionDocument) {
 
-        final var daysAndHours = promotionDocument.dayAndHours().stream().map(dayAndHourDocument -> DayAndHour.builder()
-                .day(Days.valueOf(dayAndHourDocument.day().name()))
-                .startTime(dayAndHourDocument.startTime())
-                .endTime(dayAndHourDocument.endTime())
-                .build()).toList();
+        final var daysAndHours = promotionDocument.dayAndHours().stream().map(dayAndHourDocument ->
+                DayAndHour.of(Days.valueOf(dayAndHourDocument.day().name()),
+                        dayAndHourDocument.startTime(),
+                        dayAndHourDocument.endTime())).toList();
 
-        return Promotion.builder()
-                .description(promotionDocument.description())
-                .promotionalPrice(promotionDocument.promotionalPrice())
-                .dayAndHours(daysAndHours)
-                .build();
+        return Promotion.of(promotionDocument.description(), promotionDocument.promotionalPrice(), daysAndHours);
     }
 
     private static SearchInformation toDomain(final SearchInformationDocument searchInformationDocument) {
-        return SearchInformation.builder()
-                .productId(searchInformationDocument.productId())
-                .createAt(searchInformationDocument.createAt())
-                .updateAt(searchInformationDocument.updateAt())
-                .nameSearch(searchInformationDocument.nameSearch())
-                .build();
+        return SearchInformation.of(searchInformationDocument.productId(), searchInformationDocument.nameSearch(), searchInformationDocument.createAt(), searchInformationDocument.updateAt());
     }
 }

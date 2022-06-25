@@ -6,9 +6,8 @@ import com.br.rank.list.infra.database.documents.SearchRestaurantDocument;
 public class SearchRestaurantConverter {
 
     public static SearchRestaurant toDomain(final SearchRestaurantDocument document) {
-        return SearchRestaurant.builder()
-                .id(document.id())
-                .name(document.name())
-                .build();
+        return SearchRestaurant.of(
+                document.id(),
+                document.name());
     }
 }

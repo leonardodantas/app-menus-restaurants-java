@@ -1,6 +1,5 @@
 package com.br.rank.list.app.usecases.impl;
 
-import com.br.rank.list.app.exceptions.PromotionAlreadyExistException;
 import com.br.rank.list.app.repositories.IProductRepository;
 import com.br.rank.list.app.repositories.IRestaurantRepository;
 import com.br.rank.list.app.usecases.ICreatePromotion;
@@ -24,23 +23,8 @@ public class CreatePromotion implements ICreatePromotion {
     @Override
     public Product execute(final String productId, final Promotion promotion) {
         final var product = getProductOrThrowNotFound.execute(productId);
-        validateDaysPromotion(product, promotion);
         final var productToUpdate = Product.createPromotionOf(product, promotion);
         return productRepository.saveProductWithPromotion(productToUpdate);
     }
 
-    private void validateDaysPromotion(final Product product, final Promotion promotion) {
-        final var promotions = product.getPromotion();
-        promotions.operationTimeIsValid();
-
-        promotions.getDayAndHours()
-                .stream().filter(existingPromotions -> promotion
-                        .getDayAndHours()
-                        .stream()
-                        .anyMatch(newPromotions -> newPromotions.getDay().equals(existingPromotions.getDay())))
-                .findFirst()
-                .ifPresent(p -> {
-                    throw PromotionAlreadyExistException.from("Promotion already exists to day " + p.getDay());
-                });
-    }
 }

@@ -21,7 +21,6 @@ public class CreateRestaurant implements ICreateRestaurant {
     @Override
     @CacheEvict(value = "restaurants", allEntries = true)
     public Restaurant execute(final Restaurant restaurant) {
-        restaurant.operationTimeIsValid();
         final var restaurantSave = this.restaurantRepository.save(restaurant);
         this.applicationEventPublisher.publishEvent(restaurant);
         return restaurantSave;

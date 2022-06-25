@@ -24,6 +24,6 @@ public class GetCategories implements IGetCategories {
 
         return restaurantCategoriesRepository.findByCode(code)
                 .map(RestaurantCategories::getCategories)
-                .orElse(new Categories());
+                .orElse(Categories.empty());
     }
 }

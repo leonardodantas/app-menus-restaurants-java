@@ -19,7 +19,7 @@ public class RemoveProductEvents implements IRemoveProductEvents {
 
     @Override
     public void execute(final String id, final String code) {
-        applicationEventPublisher.publishEvent(RestaurantCode.from(code));
+        applicationEventPublisher.publishEvent(new RestaurantCode(code));
         removeProductMessage.execute(id);
     }
 }

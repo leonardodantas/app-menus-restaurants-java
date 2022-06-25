@@ -25,7 +25,7 @@ public class RemovePromotionDay implements IRemovePromotionDay {
     public void execute(final String productId, final Days day) {
         final var product = getProductOrThrowNotFound.execute(productId);
         final DayAndHour dayAndHourPromotion = getDayAndHour(product, day);
-        product.removePromotion(dayAndHourPromotion);
+        product.removePromotionOf(dayAndHourPromotion);
         productRepository.save(product);
     }
 
