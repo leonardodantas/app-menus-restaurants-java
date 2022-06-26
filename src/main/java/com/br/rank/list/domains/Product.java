@@ -22,7 +22,7 @@ public final class Product implements Serializable {
     private Promotion promotion;
     private SearchInformation searchInformation;
 
-    private Product(final String id, final String code, final String name, final BigDecimal price, final Categories categories, final boolean promotionActive, final Promotion promotion, final SearchInformation searchInformation) {
+    private Product(final String id, final String name, final String code, final BigDecimal price, final Categories categories, final boolean promotionActive, final Promotion promotion, final SearchInformation searchInformation) {
         this.id = id;
         this.code = code;
         this.name = name;

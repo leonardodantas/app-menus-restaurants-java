@@ -22,6 +22,7 @@ public class SendProductMessage implements ISendProductMessage {
     @Override
     public void execute(final Product product) {
         try {
+
             final var message = objectMapper.writeValueAsString(product);
             kafkaTemplate.send(SEND_TOPIC_KAFKA, message);
         } catch (JsonProcessingException e) {

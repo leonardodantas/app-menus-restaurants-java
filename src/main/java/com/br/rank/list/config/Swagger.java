@@ -31,7 +31,7 @@ public class Swagger implements WebMvcConfigurer {
     public Docket documentation() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.br.rank.list.infra.controllers"))
+                .apis(RequestHandlerSelectors.basePackage("com.br.rank.list.infra.http"))
                 .build()
                 .tags(
                         new Tag("Restaurants", "", 0),
