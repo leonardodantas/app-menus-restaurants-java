@@ -12,7 +12,7 @@ public class SendProductMessage implements ISendProductMessage {
 
     private final KafkaTemplate<String, String> kafkaTemplate;
     private final ObjectMapper objectMapper;
-    private final static String SEND_TOPIC_KAFKA = "sendProduct";
+    private final static String SEND_TOPIC_KAFKA = "send.product.meiliSearch";
 
     public SendProductMessage(final KafkaTemplate<String, String> kafkaTemplate, final ObjectMapper objectMapper) {
         this.kafkaTemplate = kafkaTemplate;
