@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class SearchInformationConsumer {
 
-    private static final String SEARCH_INFORMATION_UPDATE = "searchInformationUpdate";
+    private static final String SEARCH_INFORMATION_UPDATE = "send.search.information";
     private final ObjectMapper objectMapper;
     private final IUpdateSearchInformation searchInformation;
 

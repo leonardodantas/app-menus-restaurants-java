@@ -41,27 +41,18 @@ public class RestaurantRepository implements IRestaurantRepository {
     @Override
     public Optional<Restaurant> findById(final String id) {
         final var restaurant = restaurantJPA.findByIdAndActiveTrue(id);
-        if (restaurant.isEmpty()) {
-            return Optional.empty();
-        }
-        return Optional.of(RestaurantConverter.toDomain(restaurant.get()));
+        return restaurant.map(RestaurantConverter::toDomain);
     }
 
     @Override
     public Optional<Restaurant> findByCnpj(final String cnpj) {
         final var restaurant = restaurantJPA.findByCnpjCnpjOnlyNumbersAndActiveTrue(cnpj);
-        if (restaurant.isEmpty()) {
-            return Optional.empty();
-        }
-        return Optional.of(RestaurantConverter.toDomain(restaurant.get()));
+        return restaurant.map(RestaurantConverter::toDomain);
     }
 
     @Override
     public Optional<Restaurant> findByCode(final String code) {
         final var restaurant = restaurantJPA.findByCodeAndActiveTrue(code);
-        if (restaurant.isEmpty()) {
-            return Optional.empty();
-        }
-        return Optional.of(RestaurantConverter.toDomain(restaurant.get()));
+        return restaurant.map(RestaurantConverter::toDomain);
     }
 }

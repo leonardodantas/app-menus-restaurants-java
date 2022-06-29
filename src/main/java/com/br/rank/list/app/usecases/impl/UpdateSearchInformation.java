@@ -2,6 +2,7 @@ package com.br.rank.list.app.usecases.impl;
 
 import com.br.rank.list.app.exceptions.ProductNotFoundException;
 import com.br.rank.list.app.repositories.IProductRepository;
+import com.br.rank.list.app.repositories.ISearchInformationRepository;
 import com.br.rank.list.app.usecases.IUpdateSearchInformation;
 import com.br.rank.list.domains.SearchInformation;
 import org.springframework.stereotype.Service;
@@ -10,18 +11,18 @@ import org.springframework.stereotype.Service;
 public class UpdateSearchInformation implements IUpdateSearchInformation {
 
     private final IProductRepository productRepository;
+    private final ISearchInformationRepository searchInformationRepository;
 
-    public UpdateSearchInformation(final IProductRepository productRepository) {
+    public UpdateSearchInformation(final IProductRepository productRepository, final ISearchInformationRepository searchInformationRepository) {
         this.productRepository = productRepository;
+        this.searchInformationRepository = searchInformationRepository;
     }
 
     @Override
     public void execute(final SearchInformation searchInformation) {
-        final var product = productRepository.findById(searchInformation.getProductId())
-                .orElseThrow(() -> ProductNotFoundException.from(String.format("Product %s not found", searchInformation.getProductId())));
+        final var searchInformationToSave =searchInformationRepository.findByProductId(searchInformation.getProductId())
+                .map(search -> search.updateFrom(searchInformation)).orElseGet(() -> SearchInformation.from(searchInformation));
 
-        final var productToUpdate = product.updateSearch(searchInformation);
-
-        productRepository.save(productToUpdate);
+        searchInformationRepository.save(searchInformationToSave);
     }
 }

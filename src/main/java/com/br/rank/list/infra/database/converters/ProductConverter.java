@@ -3,7 +3,6 @@ package com.br.rank.list.infra.database.converters;
 import com.br.rank.list.domains.*;
 import com.br.rank.list.infra.database.documents.ProductDocument;
 import com.br.rank.list.infra.database.documents.PromotionDocument;
-import com.br.rank.list.infra.database.documents.SearchInformationDocument;
 
 public class ProductConverter {
 
@@ -12,7 +11,6 @@ public class ProductConverter {
                 .id(productDocument.id())
                 .promotionActive(productDocument.promotionActive())
                 .promotion(toDomain(productDocument.promotion()))
-                .searchInformation(toDomain(productDocument.searchInformation()))
                 .build();
     }
 
@@ -26,7 +24,4 @@ public class ProductConverter {
         return Promotion.of(promotionDocument.description(), promotionDocument.promotionalPrice(), daysAndHours);
     }
 
-    private static SearchInformation toDomain(final SearchInformationDocument searchInformationDocument) {
-        return SearchInformation.of(searchInformationDocument.productId(), searchInformationDocument.nameSearch(), searchInformationDocument.createAt(), searchInformationDocument.updateAt());
-    }
 }

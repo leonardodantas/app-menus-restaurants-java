@@ -14,15 +14,14 @@ public record ProductDocument(
         BigDecimal price,
         CategoriesDocument categories,
         boolean promotionActive,
-        PromotionDocument promotion,
-        SearchInformationDocument searchInformation
+        PromotionDocument promotion
 ) {
 
 
     public static ProductDocument from(final Product product) {
         return new ProductDocument(product.getId(), product.getCode(), product.getName(), product.getPrice(),
                 CategoriesDocument.from(product.getCategories()), product.isPromotionActive(),
-                PromotionDocument.from(product.getPromotion()), SearchInformationDocument.from(product.getSearchInformation())
+                PromotionDocument.from(product.getPromotion())
         );
     }
 

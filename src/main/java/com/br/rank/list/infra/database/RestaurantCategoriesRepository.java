@@ -32,9 +32,6 @@ public class RestaurantCategoriesRepository implements IRestaurantCategoriesRepo
     @Override
     public Optional<RestaurantCategories> findByCode(final String code) {
         final var restaurantCategoriesDocument = restaurantCategoriesJPA.findByCode(code);
-        if (restaurantCategoriesDocument.isEmpty()) {
-            return Optional.empty();
-        }
-        return Optional.of(RestaurantCategoriesConverter.toDomain(restaurantCategoriesDocument.get()));
+        return restaurantCategoriesDocument.map(RestaurantCategoriesConverter::toDomain);
     }
 }

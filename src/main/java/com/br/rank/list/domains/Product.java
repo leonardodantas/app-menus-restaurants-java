@@ -20,9 +20,8 @@ public final class Product implements Serializable {
     private Categories categories;
     private boolean promotionActive;
     private Promotion promotion;
-    private SearchInformation searchInformation;
 
-    private Product(final String id, final String name, final String code, final BigDecimal price, final Categories categories, final boolean promotionActive, final Promotion promotion, final SearchInformation searchInformation) {
+    private Product(final String id, final String name, final String code, final BigDecimal price, final Categories categories, final boolean promotionActive, final Promotion promotion) {
         this.id = id;
         this.code = code;
         this.name = name;
@@ -30,7 +29,6 @@ public final class Product implements Serializable {
         this.categories = categories;
         this.promotionActive = promotionActive;
         this.promotion = promotion;
-        this.searchInformation = searchInformation;
     }
 
     public static Product createPromotionOf(final Product product, final Promotion promotion) {
@@ -42,8 +40,7 @@ public final class Product implements Serializable {
                 product.getPrice(),
                 product.getCategories(),
                 true,
-                promotion,
-                product.getSearchInformation()
+                promotion
         );
     }
 
@@ -60,7 +57,7 @@ public final class Product implements Serializable {
     }
 
     public static Product of(final Product product, final Collection<DayAndHour> daysAndHours) {
-        return new Product(product.getId(), product.getCode(), product.getName(), product.getPrice(), product.getCategories(), true, Promotion.of(product.getPromotion(), daysAndHours), SearchInformation.noSearchInformation());
+        return new Product(product.getId(), product.getCode(), product.getName(), product.getPrice(), product.getCategories(), true, Promotion.of(product.getPromotion(), daysAndHours));
     }
 
     public void removePromotion() {
@@ -96,19 +93,6 @@ public final class Product implements Serializable {
         this.price = promotion.getPromotionalPrice();
     }
 
-    public Product updateSearch(final SearchInformation searchInformation) {
-        return new Product(
-                this.id,
-                this.code,
-                this.name,
-                this.price,
-                this.categories,
-                this.promotionActive,
-                this.promotion,
-                searchInformation
-        );
-    }
-
     public Product updateId(final String id) {
         return new Product(
                 id,
@@ -117,8 +101,7 @@ public final class Product implements Serializable {
                 this.price,
                 this.categories,
                 this.promotionActive,
-                this.promotion,
-                this.searchInformation
+                this.promotion
         );
     }
 
@@ -135,7 +118,6 @@ public final class Product implements Serializable {
         private final BigDecimal price;
         private boolean promotionActive;
         private Promotion promotion;
-        private SearchInformation searchInformation;
 
         public Builder(final String name, final String code, final Categories categories, final BigDecimal price) {
             this.name = name;
@@ -144,7 +126,6 @@ public final class Product implements Serializable {
             this.price = price;
             this.promotionActive = false;
             this.promotion = Promotion.noPromotion();
-            this.searchInformation = SearchInformation.noSearchInformation();
         }
 
         public Builder id(final String id) {
@@ -164,14 +145,8 @@ public final class Product implements Serializable {
             return this;
         }
 
-
-        public Builder searchInformation(final SearchInformation searchInformation) {
-            this.searchInformation = searchInformation;
-            return this;
-        }
-
         public Product build() {
-            return new Product(id, name, code, price, categories, promotionActive, promotion, searchInformation);
+            return new Product(id, name, code, price, categories, promotionActive, promotion);
         }
     }
 }

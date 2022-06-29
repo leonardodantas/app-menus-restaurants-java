@@ -58,10 +58,7 @@ public class ProductRepository implements IProductRepository {
     @Override
     public Optional<Product> findById(final String id) {
         final var product = productJPA.findById(id);
-        if (product.isEmpty()) {
-            return Optional.empty();
-        }
-        return Optional.of(ProductConverter.toDomain(product.get()));
+        return product.map(ProductConverter::toDomain);
     }
 
     @Override
