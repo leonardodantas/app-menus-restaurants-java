@@ -8,13 +8,13 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SendProductMessage implements ISendProductMessage {
+public class SendProductProducer implements ISendProductMessage {
 
     private final KafkaTemplate<String, String> kafkaTemplate;
     private final ObjectMapper objectMapper;
     private final static String SEND_TOPIC_KAFKA = "send.product.meiliSearch";
 
-    public SendProductMessage(final KafkaTemplate<String, String> kafkaTemplate, final ObjectMapper objectMapper) {
+    public SendProductProducer(final KafkaTemplate<String, String> kafkaTemplate, final ObjectMapper objectMapper) {
         this.kafkaTemplate = kafkaTemplate;
         this.objectMapper = objectMapper;
     }

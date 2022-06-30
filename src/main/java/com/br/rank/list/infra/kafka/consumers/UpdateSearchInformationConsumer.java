@@ -8,13 +8,13 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SearchInformationConsumer {
+public class UpdateSearchInformationConsumer {
 
     private static final String SEARCH_INFORMATION_UPDATE = "send.search.information";
     private final ObjectMapper objectMapper;
     private final IUpdateSearchInformation searchInformation;
 
-    public SearchInformationConsumer(final ObjectMapper objectMapper, final IUpdateSearchInformation searchInformation) {
+    public UpdateSearchInformationConsumer(final ObjectMapper objectMapper, final IUpdateSearchInformation searchInformation) {
         this.objectMapper = objectMapper;
         this.searchInformation = searchInformation;
     }

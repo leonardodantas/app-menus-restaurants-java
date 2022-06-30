@@ -5,11 +5,11 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
 @Component
-public class RemoveProductMessage implements IRemoveProductMessage {
+public class RemoveProductProducer implements IRemoveProductMessage {
     private final KafkaTemplate<String, String> kafkaTemplate;
-    private final static String REMOVE_TOPIC_KAFKA = "removeProduct";
+    private final static String REMOVE_TOPIC_KAFKA = "remove.product.meiliSearch";
 
-    public RemoveProductMessage(final KafkaTemplate<String, String> kafkaTemplate) {
+    public RemoveProductProducer(final KafkaTemplate<String, String> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
     }
 

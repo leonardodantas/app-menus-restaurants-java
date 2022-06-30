@@ -5,6 +5,7 @@ import com.br.rank.list.domains.SearchInformation;
 import com.br.rank.list.infra.database.converters.SearchInformationConverter;
 import com.br.rank.list.infra.database.documents.SearchInformationDocument;
 import com.br.rank.list.infra.database.jpa.SearchInformationJPA;
+import com.br.rank.list.infra.exceptions.RemoveEntityException;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
@@ -29,7 +30,16 @@ public class SearchInformationRepository implements ISearchInformationRepository
         try {
             searchInformationJPA.save(SearchInformationDocument.from(searchInformation));
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new RemoveEntityException(e.getMessage());
+        }
+    }
+
+    @Override
+    public void removeByProductId(String productId) {
+        try {
+            searchInformationJPA.deleteByProductId(productId);
+        } catch (Exception e) {
+            throw new RemoveEntityException(e.getMessage());
         }
     }
 }

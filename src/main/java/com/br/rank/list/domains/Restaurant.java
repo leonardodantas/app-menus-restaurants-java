@@ -163,7 +163,7 @@ public final class Restaurant implements Serializable {
             final var initialCode = restaurantName.substring(0, 7);
             final var finalCode = UUID.randomUUID().toString().substring(0, 5);
 
-            return String.format(initialCode + "-" + finalCode).toUpperCase(Locale.ROOT);
+            return String.format("%s" + "-" + "%s", initialCode.trim(), finalCode.trim()).toUpperCase(Locale.ROOT);
         }
     }
 
