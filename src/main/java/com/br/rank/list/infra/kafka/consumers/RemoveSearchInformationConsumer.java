@@ -7,14 +7,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class RemoveSearchInformationConsumer {
 
-    private static final String SEARCH_INFORMATION_UPDATE = "remove.search.information";
+    private static final String SEARCH_INFORMATION_REMOVE = "remove.search.information";
     private final IRemoveSearchInformation removeSearchInformation;
 
     public RemoveSearchInformationConsumer(final IRemoveSearchInformation removeSearchInformation) {
         this.removeSearchInformation = removeSearchInformation;
     }
 
-    @KafkaListener(topics = SEARCH_INFORMATION_UPDATE, groupId = "group-searchInformationRemove")
+    @KafkaListener(topics = SEARCH_INFORMATION_REMOVE, groupId = "group-searchInformationRemove")
     public void listener(final String productId) {
         removeSearchInformation.execute(productId);
     }
