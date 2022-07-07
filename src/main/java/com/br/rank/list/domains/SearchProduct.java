@@ -1,13 +1,9 @@
 package com.br.rank.list.domains;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 @Getter
-@NoArgsConstructor
-@Document("searchProduct")
-public class SearchProduct {
+public final class SearchProduct {
 
     private String id;
     private String name;
@@ -19,7 +15,17 @@ public class SearchProduct {
         this.code = product.getCode();
     }
 
+    private SearchProduct(final String id, final String name, final String code) {
+        this.id = id;
+        this.name = name;
+        this.code = code;
+    }
+
     public static SearchProduct from(final Product product) {
         return new SearchProduct(product);
+    }
+
+    public static SearchProduct of(final String id, final String name, final String code) {
+        return new SearchProduct(id, name, code);
     }
 }

@@ -3,6 +3,8 @@ package com.br.rank.list.infra.database;
 import com.br.rank.list.app.repositories.IProductRepository;
 import com.br.rank.list.domains.Categories;
 import com.br.rank.list.domains.Product;
+import com.br.rank.list.infra.database.converters.ProductConverter;
+import com.br.rank.list.infra.database.documents.ProductDocument;
 import com.br.rank.list.infra.database.jpa.ProductJPA;
 import com.br.rank.list.infra.exceptions.RemoveEntityException;
 import com.br.rank.list.infra.exceptions.SaveEntityException;
@@ -27,7 +29,9 @@ public class ProductRepository implements IProductRepository {
     @Override
     public Product save(final Product product) {
         try {
-            return productJPA.save(product);
+            final var productDocument = ProductDocument.from(product);
+            final var productSave = productJPA.save(productDocument);
+            return ProductConverter.toDomain(productSave);
         } catch (final Exception e) {
             throw new SaveEntityException(e.getMessage());
         }
@@ -37,7 +41,9 @@ public class ProductRepository implements IProductRepository {
     @CacheEvict(value = "productsInPromotion", allEntries = true)
     public Product saveProductWithPromotion(final Product product) {
         try {
-            return productJPA.save(product);
+            final var productDocument = ProductDocument.from(product);
+            final var productSave = productJPA.save(productDocument);
+            return ProductConverter.toDomain(productSave);
         } catch (final Exception e) {
             throw new SaveEntityException(e.getMessage());
         }
@@ -46,17 +52,19 @@ public class ProductRepository implements IProductRepository {
     @Override
     public Page<Product> findAllByCode(final String code, final int page, final int size) {
         final var pageable = PageRequest.of(page, size);
-        return productJPA.findAllByCode(code, pageable);
+        return productJPA.findAllByCode(code, pageable).map(ProductConverter::toDomain);
     }
 
     @Override
     public Optional<Product> findById(final String id) {
-        return productJPA.findById(id);
+        final var product = productJPA.findById(id);
+        return product.map(ProductConverter::toDomain);
     }
 
     @Override
     public Collection<Product> findAllByCode(final String code) {
-        return productJPA.findAllByCode(code);
+        final var products = productJPA.findAllByCode(code);
+        return products.stream().map(ProductConverter::toDomain).toList();
     }
 
     @Override
@@ -70,19 +78,22 @@ public class ProductRepository implements IProductRepository {
 
     @Override
     public Collection<Product> findByCodeAndPromotionTrue(final String code) {
-        return productJPA.findByCodeAndPromotionActiveTrue(code);
+        final var products = productJPA.findByCodeAndPromotionActiveTrue(code);
+        return products.stream().map(ProductConverter::toDomain).toList();
     }
 
     @Override
     @Cacheable("productsInPromotion")
     public Collection<Product> findAllByCodeAndPromotionTrueCacheable(final String code) {
-        return productJPA.findByCodeAndPromotionActiveTrue(code);
+        final var products = productJPA.findByCodeAndPromotionActiveTrue(code);
+        return products.stream().map(ProductConverter::toDomain).toList();
     }
 
     @Override
     public Collection<Product> findAllByCodeAndCategories(final String code, final Categories categories) {
         final var values = categories.getValues();
-        return productJPA.findByCodeAndCategoriesValuesIn(code, values);
+        final var products = productJPA.findByCodeAndCategoriesValuesIn(code, values);
+        return products.stream().map(ProductConverter::toDomain).toList();
     }
 
 }

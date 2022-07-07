@@ -1,13 +1,9 @@
 package com.br.rank.list.domains;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 @Getter
-@NoArgsConstructor
-@Document("searchRestaurant")
-public class SearchRestaurant {
+public final class SearchRestaurant {
 
     private String id;
     private String name;
@@ -17,7 +13,16 @@ public class SearchRestaurant {
         this.name = restaurant.getName();
     }
 
+    private SearchRestaurant(final String id, final String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public static SearchRestaurant from(final Restaurant restaurant) {
         return new SearchRestaurant(restaurant);
+    }
+
+    public static SearchRestaurant of(final String id, final String name) {
+        return new SearchRestaurant(id, name);
     }
 }

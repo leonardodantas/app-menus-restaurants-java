@@ -1,7 +1,7 @@
 package com.br.rank.list.app.validators.impl;
 
 import com.br.rank.list.app.validators.ICategoriesValidator;
-import com.br.rank.list.infra.jsons.requests.CategoriesRequestJson;
+import com.br.rank.list.infra.http.jsons.requests.CategoriesRequestJson;
 import org.springframework.stereotype.Component;
 
 import java.util.HashSet;

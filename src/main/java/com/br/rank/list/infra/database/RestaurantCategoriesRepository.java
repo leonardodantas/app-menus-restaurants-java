@@ -2,6 +2,8 @@ package com.br.rank.list.infra.database;
 
 import com.br.rank.list.app.repositories.IRestaurantCategoriesRepository;
 import com.br.rank.list.domains.RestaurantCategories;
+import com.br.rank.list.infra.database.converters.RestaurantCategoriesConverter;
+import com.br.rank.list.infra.database.documents.RestaurantCategoriesDocument;
 import com.br.rank.list.infra.database.jpa.RestaurantCategoriesJPA;
 import com.br.rank.list.infra.exceptions.SaveEntityException;
 import org.springframework.stereotype.Component;
@@ -20,7 +22,8 @@ public class RestaurantCategoriesRepository implements IRestaurantCategoriesRepo
     @Override
     public void save(final RestaurantCategories restaurantCategories) {
         try {
-            restaurantCategoriesJPA.save(restaurantCategories);
+            final var restaurantCategoriesDocument = RestaurantCategoriesDocument.from(restaurantCategories);
+            restaurantCategoriesJPA.save(restaurantCategoriesDocument);
         } catch (final Exception e) {
             throw new SaveEntityException(e.getMessage());
         }
@@ -28,6 +31,7 @@ public class RestaurantCategoriesRepository implements IRestaurantCategoriesRepo
 
     @Override
     public Optional<RestaurantCategories> findByCode(final String code) {
-        return restaurantCategoriesJPA.findByCode(code);
+        final var restaurantCategoriesDocument = restaurantCategoriesJPA.findByCode(code);
+        return restaurantCategoriesDocument.map(RestaurantCategoriesConverter::toDomain);
     }
 }
