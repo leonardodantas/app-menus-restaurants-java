@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Getter
-public final class Promotion implements Serializable {
+public final class  Promotion implements Serializable {
     private String description;
     private BigDecimal promotionalPrice;
     private Collection<DayAndHour> dayAndHours;
