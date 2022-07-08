@@ -9,4 +9,7 @@ public interface ISearchProductRepository {
     void save(SearchProduct searchProduct);
 
     Collection<SearchProduct> findByCodeAndNameContaining(String code, String search);
+
+    Collection<SearchProduct> findByNameContaining(String search);
+
 }

@@ -34,4 +34,10 @@ public class SearchProductRepository implements ISearchProductRepository {
     public Collection<SearchProduct> findByCodeAndNameContaining(String code, String search) {
         return searchProductJPA.findByCodeAndNameContainingIgnoreCase(code, search).stream().map(SearchProductConverter::toDomain).collect(Collectors.toList());
     }
+
+    @Override
+    public Collection<SearchProduct> findByNameContaining(final String search) {
+        return searchProductJPA.findByNameContaining(search).stream().map(SearchProductConverter::toDomain).collect(Collectors.toList());
+    }
+
 }
