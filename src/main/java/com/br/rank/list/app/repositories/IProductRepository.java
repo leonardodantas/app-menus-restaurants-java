@@ -26,4 +26,6 @@ public interface IProductRepository {
     Collection<Product> findAllByCodeAndPromotionTrueCacheable(String code);
 
     Collection<Product> findAllByCodeAndCategories(String code, Categories categories);
+
+    Collection<Product> findByNameContaining(String search);
 }
