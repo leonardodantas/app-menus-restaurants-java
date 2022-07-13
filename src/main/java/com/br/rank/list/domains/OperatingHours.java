@@ -1,11 +1,13 @@
 package com.br.rank.list.domains;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.time.LocalTime;
 
 @Getter
+@NoArgsConstructor
 public final class OperatingHours implements Serializable {
     private LocalTime startTime;
     private LocalTime endTime;

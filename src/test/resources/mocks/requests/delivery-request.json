@@ -1,0 +1,5 @@
+{
+  "minimumDeliveryTime": 10,
+  "maximumDeliveryTime": 30,
+  "rate": 2.00
+}

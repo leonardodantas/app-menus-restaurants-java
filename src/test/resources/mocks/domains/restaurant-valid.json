@@ -1,0 +1,28 @@
+{
+  "id" : "62ceaa68b4945572b834605f",
+  "code" : "LANCHON-B5634",
+  "cnpj" : {
+    "cnpj" : "56.363.713/0001-74",
+    "cnpjOnlyNumbers" : "56363713000174"
+  },
+  "name" : "Lanchonete Rui Barbosa",
+  "address" : {
+    "street" : "Rui Barbosa",
+    "number" : "321",
+    "complement" : "Avenida principal",
+    "city" : "SP",
+    "state" : "Assis",
+    "village" : "Avenida"
+  },
+  "openingHours" : {
+    "startTime" : "18:00:00",
+    "endTime" : "23:00:00"
+  },
+  "delivery" : {
+    "minimumDeliveryTime" : 0,
+    "maximumDeliveryTime" : 0
+  },
+  "deliveryAvailable" : false,
+  "open" : false,
+  "active" : true
+}
