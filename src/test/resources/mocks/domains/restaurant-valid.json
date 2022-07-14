@@ -19,8 +19,9 @@
     "endTime" : "23:00:00"
   },
   "delivery" : {
-    "minimumDeliveryTime" : 0,
-    "maximumDeliveryTime" : 0
+    "minimumDeliveryTime" : 10,
+    "maximumDeliveryTime" : 30,
+    "rate": 2
   },
   "deliveryAvailable" : false,
   "open" : false,
