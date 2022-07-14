@@ -7,15 +7,12 @@ import java.io.Serializable;
 import java.util.Collection;
 
 @Getter
+@NoArgsConstructor
 public final class Categories implements Serializable {
     private Collection<String> values;
 
     private Categories(final Collection<String> values) {
         this.values = values;
-    }
-
-    private Categories() {
-
     }
 
     public static Categories from(final Collection<String> categories) {

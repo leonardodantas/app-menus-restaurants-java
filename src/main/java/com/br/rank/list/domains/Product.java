@@ -2,6 +2,7 @@ package com.br.rank.list.domains;
 
 import com.br.rank.list.app.exceptions.PromotionAlreadyExistException;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -11,6 +12,7 @@ import java.util.Collection;
 import java.util.Optional;
 
 @Getter
+@NoArgsConstructor
 public final class Product implements Serializable {
 
     private String id;

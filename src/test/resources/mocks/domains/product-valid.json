@@ -1,0 +1,17 @@
+{
+  "id": "62cfff959ff3921d08df7920",
+  "code": "LANCHON-B5634",
+  "name": "Cachorro quente especial",
+  "price": "20",
+  "categories": {
+    "values": [
+      "MOSTARDA",
+      "SALSICHA",
+      "LANCHE"
+    ]
+  },
+  "promotionActive": false,
+  "promotion": {
+    "dayAndHours": []
+  }
+}

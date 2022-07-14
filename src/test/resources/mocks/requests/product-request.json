@@ -1,0 +1,12 @@
+{
+  "code": "LANCHON-B5634",
+  "name": "Cachorro quente especial",
+  "price": "20",
+  "categories": {
+    "values": [
+      "MOSTARDA",
+      "SALSICHA",
+      "LANCHE"
+    ]
+  }
+}
