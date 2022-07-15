@@ -1,0 +1,11 @@
+{
+  "daysAndHours": [
+    {
+      "day": "MONDAY",
+      "endTime": "23:00",
+      "startTime": "19:00"
+    }
+  ],
+  "description": "Dois por um",
+  "promotionalPrice": 10
+}
