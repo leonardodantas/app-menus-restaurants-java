@@ -15,7 +15,7 @@ Construção de um back end que comporta algumas funcionalidades de aplicações
 - [x] Crud de promoções.
 - [x] Buscar promoções que estejam ocorrendo no momento atual.
 - [x] Buscar categorias.
-- [x] Lista de autocomplete para restaurantes e para produtos.
+- [x] Lista de autocomplete para restaurantes e para produtos com MeiliSearch.
 
 ### :hammer: Pré-requisitos
 
@@ -24,18 +24,18 @@ Antes de começar será necessário que a máquina possua o banco não relaciona
 ### 🎲 Iniciando projeto pela primeira vez
 
 ```bash
-# Baixe uma imagem do mongo atraves do docker em um terminal
-docker pull mongo
-
-# Apos o download execute o seguinte comando para a criação de uma nova instância com o banco de dados MongoDB
-docker run --name mongodb -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=leonardo -e MONGO_INITDB_ROOT_PASSWORD=123456 mongo
-
-# Inicie o banco Redis com o seguinte comando em um terminal
-docker run --name redis -p 6379:6379 redis
-
 # Clone este repositório
 git clone https://github.com/leonardodantas/app-menus-restaurants-java.git
 
+# Tenha o docker compose instalando, acesse a pasta raiz do projeto e execute o seguinte comando
+docker-compose up
+
+# O comando acima ira criar instâncias das seguintes aplicações
+- Kafka
+- Redis
+- Mongo
+- MeiliSearch
+ 
 # Inicie a aplicação com uma IDE de sua preferência
 
 #Acesse o seguinte endereço no navegador
@@ -52,6 +52,9 @@ http://localhost:8080/swagger-ui.html
 - MongoDB
 - Arquitetura baseada em Clean Arch
 - Criação de Annotations para validação de dados
+- Mensageria com Kakfa
+- Comunicação rest com Feing
+- Fallback com Resilience4j
 
 ## Documentação da API
 
