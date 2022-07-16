@@ -243,6 +243,20 @@ CURL de exemplo:
 ```
 curl -X DELETE "http://localhost:8080/products?code=LANCHES-BDB2D&id=628b7d956db36a02c824593f" -H "accept: */*"
 ```
+
+- ### Buscar produtos com MeiliSearch
+
+```
+GET /search/products?search={Termo de busca}
+```
+
+CURL de exemplo:
+
+```
+curl -X GET "http://localhost:8080/search/products?search=Lanche" -H "accept: */*"
+```
+
+
 ## Delivery
 
 - ### Ativar delivery
@@ -387,7 +401,9 @@ curl -X POST "http://localhost:8080/categories/restaurants/RESTAUR-725AE" -H "ac
 
 ## Apêndice
 
-O projeto foi construido a partir do seguinte desafio [Desafio backend](https://github.com/goomerdev/job-dev-backend-interview) encontrado no repositório https://github.com/CollabCodeTech/backend-challenges
+- O projeto foi construido a partir do seguinte desafio [Desafio backend](https://github.com/goomerdev/job-dev-backend-interview) encontrado no repositório https://github.com/CollabCodeTech/backend-challenges
+- Para salvar os produtos no MeiliSearch foi criado um novo serviço [APP-MENUS-RESTAURANTS-KAFKA-JAVA](https://github.com/leonardodantas/app-menus-restaurants-kafka-java). Esse serviço é responsavel por ler os dados de um fila, e salvar no MeiliSearch.
+- Para recuperar os dados do MeiliSearch, tambem foi criado um novo serviço [APP-RANK-LIST-MEILI-SEARCH-KOTLIN](https://github.com/leonardodantas/app-rank-list-meili-search-kotlin), que é responsavel por acessar o MeiliSearch e disponibilizar os dados atraves de chamadas rest.
 
 
 ### :sunglasses: Autor
