@@ -1,6 +1,5 @@
 package com.br.rank.list.app.usecases.impl;
 
-import com.br.rank.list.app.exceptions.ProductNotFoundException;
 import com.br.rank.list.app.repositories.IProductRepository;
 import com.br.rank.list.app.repositories.ISearchInformationRepository;
 import com.br.rank.list.app.usecases.IUpdateSearchInformation;
@@ -20,7 +19,7 @@ public class UpdateSearchInformation implements IUpdateSearchInformation {
 
     @Override
     public void execute(final SearchInformation searchInformation) {
-        final var searchInformationToSave =searchInformationRepository.findByProductId(searchInformation.getProductId())
+        final var searchInformationToSave = searchInformationRepository.findByProductId(searchInformation.getProductId())
                 .map(search -> search.updateFrom(searchInformation)).orElseGet(() -> SearchInformation.from(searchInformation));
 
         searchInformationRepository.save(searchInformationToSave);

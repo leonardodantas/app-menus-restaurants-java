@@ -1,0 +1,16 @@
+{
+  "address": {
+    "city": "Assis",
+    "complement": "Avenida principal",
+    "number": "321",
+    "state": "SP",
+    "street": "Rui Barbosa",
+    "village": "Avenida"
+  },
+  "cnpj": "75.334.352/0001-82",
+  "name": "Lanches Rui Barbosa",
+  "operatingHours": {
+    "endTime": "23:00",
+    "startTime": "19:00"
+  }
+}

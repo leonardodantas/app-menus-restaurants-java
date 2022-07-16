@@ -2,10 +2,12 @@ package com.br.rank.list.domains;
 
 import com.google.common.base.Strings;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
 @Getter
+@NoArgsConstructor
 public final class Address implements Serializable {
     private String street;
     private String number;

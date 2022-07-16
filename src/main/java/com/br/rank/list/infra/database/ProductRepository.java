@@ -96,4 +96,10 @@ public class ProductRepository implements IProductRepository {
         return products.stream().map(ProductConverter::toDomain).toList();
     }
 
+    @Override
+    public Collection<Product> findByNameContaining(final String search) {
+        final var products = productJPA.findByNameContainingIgnoreCase(search);
+        return products.stream().map(ProductConverter::toDomain).toList();
+    }
+
 }

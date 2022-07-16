@@ -2,6 +2,7 @@ package com.br.rank.list.domains;
 
 import com.br.rank.list.domains.exceptions.TimeBetweenHoursException;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.time.Duration;
@@ -10,6 +11,7 @@ import java.util.Locale;
 import java.util.UUID;
 
 @Getter
+@NoArgsConstructor
 public final class Restaurant implements Serializable {
 
     private String id;

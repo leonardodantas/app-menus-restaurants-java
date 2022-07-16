@@ -1,19 +1,17 @@
 package com.br.rank.list.domains;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Getter
+@NoArgsConstructor
 public final class Delivery implements Serializable {
     private int minimumDeliveryTime;
     private int maximumDeliveryTime;
     private BigDecimal rate;
-
-    private Delivery(){
-
-    }
 
     public static Delivery noDelivery(){
         return new Delivery();
