@@ -1,5 +1,6 @@
 package com.br.rank.list.app.usecases.impl;
 
+import com.br.rank.list.app.exceptions.RestaurantNotFoundException;
 import com.br.rank.list.app.repositories.IProductRepository;
 import com.br.rank.list.app.repositories.IRestaurantCategoriesRepository;
 import com.br.rank.list.app.usecases.IFindByCategories;
@@ -29,13 +30,13 @@ public class FindByCategories implements IFindByCategories {
         getRestaurantOrThrowNotFound.execute(code);
 
         final var restaurantCategories = restaurantCategoriesRepository.findByCode(code)
-                .orElseThrow();
+                .orElseThrow(() -> RestaurantNotFoundException.from(String.format("Restaurant code %s not found", code)));
 
-        validCategories(categories, restaurantCategories);
+        validateCategories(categories, restaurantCategories);
         return productRepository.findAllByCodeAndCategories(code, categories);
     }
 
-    private void validCategories(final Categories categories, final RestaurantCategories restaurantCategories) {
+    private void validateCategories(final Categories categories, final RestaurantCategories restaurantCategories) {
         final var validCategories = categories
                 .getValues()
                 .stream()

@@ -2,6 +2,7 @@ package utils;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
@@ -33,8 +34,8 @@ public class GetMockJson {
     public <T> T execute(final String fileName, TypeReference<T> klass) {
         try {
             final var pathFile = String.format("src/test/resources/mocks/%s.json", fileName);
-            final var jsonObject = (JsonObject) JsonParser.parseReader(new FileReader(pathFile));
-            return objectMapper.readValue(jsonObject.toString(), klass);
+            final var jsonArray = (JsonArray) JsonParser.parseReader(new FileReader(pathFile));
+            return objectMapper.readValue(jsonArray.toString(), klass);
         } catch (final IOException e) {
             throw new RuntimeException(e);
         }

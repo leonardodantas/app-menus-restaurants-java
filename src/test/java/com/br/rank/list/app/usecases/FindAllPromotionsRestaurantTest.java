@@ -5,12 +5,20 @@ import com.br.rank.list.app.usecases.impl.FindAllPromotionsRestaurant;
 import com.br.rank.list.domains.Product;
 import com.fasterxml.jackson.core.type.TypeReference;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 import utils.GetMockJson;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
+import static org.junit.Assert.*;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.when;
+
+@RunWith(MockitoJUnitRunner.class)
 public class FindAllPromotionsRestaurantTest {
 
     @InjectMocks
@@ -27,8 +35,14 @@ public class FindAllPromotionsRestaurantTest {
         final var type = new TypeReference<Collection<Product>>() {
         };
 
-        final var products = getMockJson.execute("products-valid", type);
+        final var products = getMockJson.execute("domains/products-valid", type);
+
+        when(productRepository.findByCodeAndPromotionTrue(anyString()))
+                .thenReturn(products);
 
         final var restaurantsWithPromotion = findAllPromotionsRestaurant.execute(code);
+
+        assertNotNull(restaurantsWithPromotion);
+        assertFalse(restaurantsWithPromotion.isEmpty());
     }
 }
