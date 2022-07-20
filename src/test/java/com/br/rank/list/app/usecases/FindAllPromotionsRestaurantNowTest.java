@@ -4,7 +4,6 @@ package com.br.rank.list.app.usecases;
 import com.br.rank.list.app.repositories.IProductRepository;
 import com.br.rank.list.app.usecases.impl.FindAllPromotionsRestaurantNow;
 import com.br.rank.list.domains.Product;
-import com.br.rank.list.domains.Promotion;
 import com.fasterxml.jackson.core.type.TypeReference;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,7 +14,6 @@ import utils.GetMockJson;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Collection;
 
 import static org.junit.Assert.*;
@@ -39,7 +37,8 @@ public class FindAllPromotionsRestaurantNowTest {
     public void testExecute() {
         final var code = "123";
         final var day = DayOfWeek.from(LocalDate.now()).name();
-        final var type = new TypeReference<Collection<Product>>() {};
+        final var type = new TypeReference<Collection<Product>>() {
+        };
 
         final var products = getMockJson.execute("domains/products-with-promotion-valid", type);
 
@@ -49,24 +48,21 @@ public class FindAllPromotionsRestaurantNowTest {
         final var productsInPromotion = findAllPromotionsRestaurantNow.execute(code);
 
         assertNotNull(productsInPromotion);
-        assertFalse(productsInPromotion.isEmpty());
+        assertEquals(7, productsInPromotion.size());
 
         final var promotions = productsInPromotion.stream().map(Product::getPromotion).toList();
         final var dayAndHours = promotions.get(0).getDayAndHours().stream().filter(dayAndHour -> dayAndHour.getDay().equalsIgnoreCase(day)).findFirst();
 
         assertTrue(dayAndHours.isPresent());
-        assertEquals(1, promotions.size());
+        assertEquals(7, promotions.size());
         assertEquals(1, promotions.get(0).getDayAndHours().size());
-        assertEquals(1, promotions.get(0).getDayAndHours().stream().filter(dayAndHour -> dayAndHour.getDay().equalsIgnoreCase(DayOfWeek.from(LocalDate.now()).name())).toList().size());
-
-        promotions.forEach(promotion -> assertEquals(1,promotion.getDayAndHours().size()));
     }
 
     @Test
     public void testExecuteProductsWithPromotionsInvalid() {
         final var code = "123";
-        final var day = DayOfWeek.from(LocalDate.now()).name();
-        final var type = new TypeReference<Collection<Product>>() {};
+        final var type = new TypeReference<Collection<Product>>() {
+        };
 
         final var products = getMockJson.execute("domains/products-without-promotion-valid", type);
 
@@ -80,21 +76,4 @@ public class FindAllPromotionsRestaurantNowTest {
 
     }
 
-    @Test
-    public void testExecuteProductsWithPromotionsInvalid01() {
-        final var code = "123";
-        final var day = DayOfWeek.from(LocalDate.now()).name();
-        final var type = new TypeReference<Collection<Product>>() {};
-
-        final var products = getMockJson.execute("domains/products-without-promotion", type);
-
-        when(productRepository.findAllByCodeAndPromotionTrueCacheable(anyString()))
-                .thenReturn(products);
-
-        final var productsInPromotion = findAllPromotionsRestaurantNow.execute(code);
-
-        assertNotNull(productsInPromotion);
-        assertTrue(productsInPromotion.isEmpty());
-
-    }
 }
