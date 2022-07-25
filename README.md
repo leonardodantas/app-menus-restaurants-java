@@ -55,6 +55,7 @@ http://localhost:8080/swagger-ui.html
 - Mensageria com Kakfa
 - Comunicação rest com Feing
 - Fallback com Resilience4j
+- Testes de mutação com PITest
 
 ## Documentação da API
 
@@ -404,6 +405,7 @@ curl -X POST "http://localhost:8080/categories/restaurants/RESTAUR-725AE" -H "ac
 - O projeto foi construido a partir do seguinte desafio [Desafio backend](https://github.com/goomerdev/job-dev-backend-interview) encontrado no repositório https://github.com/CollabCodeTech/backend-challenges
 - Para salvar os produtos no MeiliSearch foi criado um novo serviço [APP-MENUS-RESTAURANTS-KAFKA-JAVA](https://github.com/leonardodantas/app-menus-restaurants-kafka-java). Esse serviço é responsavel por ler os dados de um fila, e salvar no MeiliSearch.
 - Para recuperar os dados do MeiliSearch, tambem foi criado um novo serviço [APP-RANK-LIST-MEILI-SEARCH-KOTLIN](https://github.com/leonardodantas/app-rank-list-meili-search-kotlin), que é responsavel por acessar o MeiliSearch e disponibilizar os dados atraves de chamadas rest.
+- Para execução dos testes de mutação, executar o seguinte comando maven "mvn clean test org.pitest:pitest-maven:mutationCoverage"
 
 
 ### :sunglasses: Autor
