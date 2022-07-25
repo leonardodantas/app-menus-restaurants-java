@@ -1,0 +1,407 @@
+[
+  {
+    "id": "62cfff959ff3921d08df7920",
+    "code": "LANCHON-B5634",
+    "name": "Cachorro quente especial",
+    "price": "20",
+    "categories": {
+      "values": [
+        "MOSTARDA",
+        "SALSICHA",
+        "LANCHE"
+      ]
+    },
+    "promotionActive": true,
+    "promotion": {
+      "description": "Dois por um",
+      "promotionalPrice": 10,
+      "dayAndHours": [
+        {
+          "day": "MONDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        },
+        {
+          "day": "TUESDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        },
+        {
+          "day": "WEDNESDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        },
+        {
+          "day": "THURSDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        },
+        {
+          "day": "FRIDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        },
+        {
+          "day": "SATURDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        },
+        {
+          "day": "SUNDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        }
+      ]
+    }
+  },
+  {
+    "id": "62cfff959ff3921d08df7920",
+    "code": "LANCHON-B5634",
+    "name": "Cachorro quente especial",
+    "price": "20",
+    "categories": {
+      "values": [
+        "MOSTARDA",
+        "SALSICHA",
+        "LANCHE"
+      ]
+    },
+    "promotionActive": true,
+    "promotion": {
+      "description": "Dois por um",
+      "promotionalPrice": 10,
+      "dayAndHours": [
+        {
+          "day": "TUESDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        },
+        {
+          "day": "WEDNESDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        },
+        {
+          "day": "THURSDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        },
+        {
+          "day": "FRIDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        },
+        {
+          "day": "SATURDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        },
+        {
+          "day": "SUNDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        }
+      ]
+    }
+  },
+  {
+    "id": "62cfff959ff3921d08df7920",
+    "code": "LANCHON-B5634",
+    "name": "Cachorro quente especial",
+    "price": "20",
+    "categories": {
+      "values": [
+        "MOSTARDA",
+        "SALSICHA",
+        "LANCHE"
+      ]
+    },
+    "promotionActive": true,
+    "promotion": {
+      "description": "Dois por um",
+      "promotionalPrice": 10,
+      "dayAndHours": [
+        {
+          "day": "MONDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        },
+        {
+          "day": "WEDNESDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        },
+        {
+          "day": "THURSDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        },
+        {
+          "day": "FRIDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        },
+        {
+          "day": "SATURDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        },
+        {
+          "day": "SUNDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        }
+      ]
+    }
+  },
+  {
+    "id": "62cfff959ff3921d08df7920",
+    "code": "LANCHON-B5634",
+    "name": "Cachorro quente especial",
+    "price": "20",
+    "categories": {
+      "values": [
+        "MOSTARDA",
+        "SALSICHA",
+        "LANCHE"
+      ]
+    },
+    "promotionActive": true,
+    "promotion": {
+      "description": "Dois por um",
+      "promotionalPrice": 10,
+      "dayAndHours": [
+        {
+          "day": "MONDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        },
+        {
+          "day": "TUESDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        },
+        {
+          "day": "THURSDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        },
+        {
+          "day": "FRIDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        },
+        {
+          "day": "SATURDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        },
+        {
+          "day": "SUNDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        }
+      ]
+    }
+  },
+  {
+    "id": "62cfff959ff3921d08df7920",
+    "code": "LANCHON-B5634",
+    "name": "Cachorro quente especial",
+    "price": "20",
+    "categories": {
+      "values": [
+        "MOSTARDA",
+        "SALSICHA",
+        "LANCHE"
+      ]
+    },
+    "promotionActive": true,
+    "promotion": {
+      "description": "Dois por um",
+      "promotionalPrice": 10,
+      "dayAndHours": [
+        {
+          "day": "MONDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        },
+        {
+          "day": "TUESDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        },
+        {
+          "day": "WEDNESDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        },
+        {
+          "day": "FRIDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        },
+        {
+          "day": "SATURDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        },
+        {
+          "day": "SUNDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        }
+      ]
+    }
+  },
+  {
+    "id": "62cfff959ff3921d08df7920",
+    "code": "LANCHON-B5634",
+    "name": "Cachorro quente especial",
+    "price": "20",
+    "categories": {
+      "values": [
+        "MOSTARDA",
+        "SALSICHA",
+        "LANCHE"
+      ]
+    },
+    "promotionActive": true,
+    "promotion": {
+      "description": "Dois por um",
+      "promotionalPrice": 10,
+      "dayAndHours": [
+        {
+          "day": "MONDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        },
+        {
+          "day": "TUESDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        },
+        {
+          "day": "WEDNESDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        },
+        {
+          "day": "THURSDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        },
+        {
+          "day": "SATURDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        },
+        {
+          "day": "SUNDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        }
+      ]
+    }
+  },
+  {
+    "id": "62cfff959ff3921d08df7920",
+    "code": "LANCHON-B5634",
+    "name": "Cachorro quente especial",
+    "price": "20",
+    "categories": {
+      "values": [
+        "MOSTARDA",
+        "SALSICHA",
+        "LANCHE"
+      ]
+    },
+    "promotionActive": true,
+    "promotion": {
+      "description": "Dois por um",
+      "promotionalPrice": 10,
+      "dayAndHours": [
+        {
+          "day": "MONDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        },
+        {
+          "day": "TUESDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        },
+        {
+          "day": "WEDNESDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        },
+        {
+          "day": "THURSDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        },
+        {
+          "day": "FRIDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        },
+        {
+          "day": "SUNDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        }
+      ]
+    }
+  },
+  {
+    "id": "62cfff959ff3921d08df7920",
+    "code": "LANCHON-B5634",
+    "name": "Cachorro quente especial",
+    "price": "20",
+    "categories": {
+      "values": [
+        "MOSTARDA",
+        "SALSICHA",
+        "LANCHE"
+      ]
+    },
+    "promotionActive": true,
+    "promotion": {
+      "description": "Dois por um",
+      "promotionalPrice": 10,
+      "dayAndHours": [
+        {
+          "day": "MONDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        },
+        {
+          "day": "TUESDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        },
+        {
+          "day": "WEDNESDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        },
+        {
+          "day": "THURSDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        },
+        {
+          "day": "FRIDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        },
+        {
+          "day": "SATURDAY",
+          "startTime": "00:00",
+          "endTime": "23:59"
+        }
+      ]
+    }
+  }
+]

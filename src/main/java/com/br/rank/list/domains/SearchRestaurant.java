@@ -1,8 +1,10 @@
 package com.br.rank.list.domains;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
+@NoArgsConstructor
 public final class SearchRestaurant {
 
     private String id;

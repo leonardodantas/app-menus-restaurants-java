@@ -1,6 +1,7 @@
 package com.br.rank.list.domains;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 
@@ -9,6 +10,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Getter
+@NoArgsConstructor
 public final class RestaurantCategories {
 
     @Id

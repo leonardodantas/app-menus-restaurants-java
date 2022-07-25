@@ -1,0 +1,77 @@
+[
+  {
+    "id": "62cfff959ff3921d08df7920",
+    "code": "LANCHON-B5634",
+    "name": "Cachorro quente especial",
+    "price": "20",
+    "categories": {
+      "values": [
+        "MOSTARDA",
+        "SALSICHA",
+        "LANCHE"
+      ]
+    },
+    "promotionActive": true,
+    "promotion": {
+      "description": "Dois por um",
+      "promotionalPrice": 10,
+      "dayAndHours": [
+        {
+          "day": "MONDAY",
+          "startTime": "19:00",
+          "endTime": "23:00"
+        }
+      ]
+    }
+  },
+  {
+    "id": "62cfff959ff3921d08df7920",
+    "code": "LANCHON-B5634",
+    "name": "Cachorro quente especial",
+    "price": "20",
+    "categories": {
+      "values": [
+        "MOSTARDA",
+        "SALSICHA",
+        "LANCHE"
+      ]
+    },
+    "promotionActive": true,
+    "promotion": {
+      "description": "Dois por um",
+      "promotionalPrice": 10,
+      "dayAndHours": [
+        {
+          "day": "MONDAY",
+          "startTime": "19:00",
+          "endTime": "23:00"
+        }
+      ]
+    }
+  },
+  {
+    "id": "62cfff959ff3921d08df7920",
+    "code": "LANCHON-B5634",
+    "name": "Cachorro quente especial",
+    "price": "20",
+    "categories": {
+      "values": [
+        "MOSTARDA",
+        "SALSICHA",
+        "LANCHE"
+      ]
+    },
+    "promotionActive": true,
+    "promotion": {
+      "description": "Dois por um",
+      "promotionalPrice": 10,
+      "dayAndHours": [
+        {
+          "day": "MONDAY",
+          "startTime": "19:00",
+          "endTime": "23:00"
+        }
+      ]
+    }
+  }
+]
