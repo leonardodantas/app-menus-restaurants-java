@@ -1,7 +1,6 @@
 package com.br.rank.list.app.usecases.impl;
 
 import com.br.rank.list.app.repositories.IProductRepository;
-import com.br.rank.list.app.repositories.IRestaurantRepository;
 import com.br.rank.list.app.usecases.IFindAllPromotionsRestaurantNow;
 import com.br.rank.list.app.usecases.IGetRestaurantOrThrowNotFound;
 import com.br.rank.list.domains.DayAndHour;
@@ -21,7 +20,7 @@ public class FindAllPromotionsRestaurantNow implements IFindAllPromotionsRestaur
     private final IProductRepository productRepository;
     private final IGetRestaurantOrThrowNotFound getRestaurantOrThrowNotFound;
 
-    public FindAllPromotionsRestaurantNow(final IProductRepository productRepository, final IRestaurantRepository restaurantRepository, final IGetRestaurantOrThrowNotFound getRestaurantOrThrowNotFound) {
+    public FindAllPromotionsRestaurantNow(final IProductRepository productRepository, final IGetRestaurantOrThrowNotFound getRestaurantOrThrowNotFound) {
         this.productRepository = productRepository;
         this.getRestaurantOrThrowNotFound = getRestaurantOrThrowNotFound;
     }

@@ -1,7 +1,6 @@
 package com.br.rank.list.app.usecases.impl;
 
 import com.br.rank.list.app.repositories.IProductRepository;
-import com.br.rank.list.app.repositories.IRestaurantRepository;
 import com.br.rank.list.app.usecases.ICreatePromotion;
 import com.br.rank.list.app.usecases.IGetProductOrThrowNotFound;
 import com.br.rank.list.domains.Product;
@@ -15,7 +14,7 @@ public class CreatePromotion implements ICreatePromotion {
 
     private final IGetProductOrThrowNotFound getProductOrThrowNotFound;
 
-    public CreatePromotion(final IProductRepository productRepository, final IRestaurantRepository restaurantRepository, final IGetProductOrThrowNotFound getProductOrThrowNotFound) {
+    public CreatePromotion(final IProductRepository productRepository, final IGetProductOrThrowNotFound getProductOrThrowNotFound) {
         this.productRepository = productRepository;
         this.getProductOrThrowNotFound = getProductOrThrowNotFound;
     }
