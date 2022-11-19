@@ -26,7 +26,7 @@ public class RemoveProductEventsTest {
 
 
     @Test
-    public void testExecute(){
+    public void testExecute() {
         final var id = "21321";
         final var code = "dasdad65464";
 
@@ -34,7 +34,5 @@ public class RemoveProductEventsTest {
 
         verify(applicationEventPublisher, times(1)).publishEvent(new RestaurantCode(code));
         verify(removeProductMessage, times(1)).execute(id);
-
-
     }
 }

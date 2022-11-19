@@ -11,10 +11,9 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import utils.GetMockJson;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
@@ -42,7 +41,7 @@ public class FindAllPromotionsRestaurantTest {
 
         final var restaurantsWithPromotion = findAllPromotionsRestaurant.execute(code);
 
-        assertNotNull(restaurantsWithPromotion);
-        assertFalse(restaurantsWithPromotion.isEmpty());
+        assertThat(restaurantsWithPromotion).isNotNull();
+        assertThat(restaurantsWithPromotion).isNotEmpty();
     }
 }

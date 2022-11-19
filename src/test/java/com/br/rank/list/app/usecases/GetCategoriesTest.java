@@ -12,8 +12,7 @@ import utils.GetMockJson;
 
 import java.util.Optional;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
@@ -39,7 +38,7 @@ public class GetCategoriesTest {
         final var code = "123";
         final var categories = getCategories.execute(code);
 
-        assertNotNull(categories);
-        assertFalse(categories.getValues().isEmpty());
+        assertThat(categories).isNotNull();
+        assertThat(categories.getValues()).isNotEmpty();
     }
 }

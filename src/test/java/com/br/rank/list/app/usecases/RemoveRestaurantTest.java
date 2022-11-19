@@ -15,7 +15,7 @@ import utils.GetMockJson;
 
 import java.util.Optional;
 
-import static org.junit.Assert.assertFalse;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
@@ -34,7 +34,7 @@ public class RemoveRestaurantTest {
     private final GetMockJson getMockJson = new GetMockJson();
 
     @Test
-    public void testExecute(){
+    public void testExecute() {
         final var restaurant = getMockJson.execute("domains/restaurant-valid", Restaurant.class);
 
         when(restaurantRepository.findById(anyString()))
@@ -48,11 +48,11 @@ public class RemoveRestaurantTest {
 
         final var restaurantRemoved = argumentCaptor.getValue();
 
-        assertFalse(restaurantRemoved.isActive());
+        assertThat(restaurantRemoved.isActive()).isFalse();
     }
 
     @Test(expected = RestaurantNotFoundException.class)
-    public void testRestaurantNotFoundException(){
+    public void testRestaurantNotFoundException() {
 
         when(restaurantRepository.findById(anyString()))
                 .thenReturn(Optional.empty());
@@ -60,6 +60,5 @@ public class RemoveRestaurantTest {
         final var id = "132";
 
         removeRestaurant.execute(id);
-
     }
 }

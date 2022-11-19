@@ -13,7 +13,7 @@ import utils.GetMockJson;
 
 import java.util.Optional;
 
-import static org.junit.Assert.assertNotNull;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
@@ -41,7 +41,7 @@ public class GetProductOrThrowNotFoundTest {
 
         final var result = getProductOrThrowNotFound.execute(productId);
 
-        assertNotNull(result);
+        assertThat(result).isNotNull();
     }
 
 

@@ -13,7 +13,7 @@ import utils.GetMockJson;
 
 import java.util.Collection;
 
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
@@ -44,7 +44,7 @@ public class GetSuggestionsProductsTest {
 
         final var result = getSuggestionsProducts.execute(code, search);
 
-        assertNotNull(result);
-        assertFalse(result.isEmpty());
+        assertThat(result).isNotNull();
+        assertThat(result).isNotEmpty();
     }
 }

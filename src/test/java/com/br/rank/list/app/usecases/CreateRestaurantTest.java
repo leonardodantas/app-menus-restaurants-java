@@ -13,7 +13,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.context.ApplicationEventPublisher;
 import utils.GetMockJson;
 
-import static org.junit.Assert.assertNotNull;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -39,7 +39,7 @@ public class CreateRestaurantTest {
                 .thenReturn(restaurant);
 
         final var restaurantSave = createRestaurant.execute(RestaurantConverter.toDomain(restaurantRequest));
-        assertNotNull(restaurantSave);
+        assertThat(restaurantSave).isNotNull();
         verify(applicationEventPublisher).publishEvent(any(Restaurant.class));
     }
 }

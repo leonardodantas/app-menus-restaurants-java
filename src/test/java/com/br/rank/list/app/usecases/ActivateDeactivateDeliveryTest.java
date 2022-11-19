@@ -7,12 +7,14 @@ import com.br.rank.list.infra.http.converters.DeliveryConverter;
 import com.br.rank.list.infra.http.jsons.requests.DeliveryRequest;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import utils.GetMockJson;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
@@ -54,8 +56,8 @@ public class ActivateDeactivateDeliveryTest {
     @Test
     public void testActivate() {
         final var result = activateDeactivateDelivery.activate(code, DeliveryConverter.toDomain(deliveryRequest));
-        assertNotNull(result);
-        assertEquals(result, restaurant.getDelivery());
+        assertThat(result).isNotNull();
+        assertThat(result).isEqualTo(restaurant.getDelivery());
     }
 
     @Test

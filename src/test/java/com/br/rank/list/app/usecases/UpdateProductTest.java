@@ -17,7 +17,7 @@ import utils.GetMockJson;
 
 import java.util.Optional;
 
-import static org.junit.Assert.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
@@ -57,7 +57,7 @@ public class UpdateProductTest {
                 .execute(argumentCaptor.capture());
 
         final var productUpdate = argumentCaptor.getValue();
-        assertEquals(productId, productUpdate.getId());
+        assertThat(productId).isEqualTo(productUpdate.getId());
 
     }
 

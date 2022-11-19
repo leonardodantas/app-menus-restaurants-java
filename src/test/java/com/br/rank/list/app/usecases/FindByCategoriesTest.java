@@ -21,8 +21,7 @@ import utils.GetMockJson;
 import java.util.Collection;
 import java.util.Optional;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
@@ -51,13 +50,13 @@ public class FindByCategoriesTest {
         this.categoriesRequest = getMockJson.execute("requests/categories-request", CategoriesRequestJson.class);
         this.restaurantCategories = getMockJson.execute("domains/restaurant-categories", RestaurantCategories.class);
 
-        final var type = new TypeReference<Collection<Product>>() {};
+        final var type = new TypeReference<Collection<Product>>() {
+        };
 
         this.products = getMockJson.execute("domains/products-valid", type);
 
         when(restaurantCategoriesRepository.findByCode(anyString()))
                 .thenReturn(Optional.of(restaurantCategories));
-
     }
 
     @Test
@@ -67,8 +66,8 @@ public class FindByCategoriesTest {
 
         final var result = findByCategories.execute(code, Categories.from(categoriesRequest.values()));
 
-        assertTrue(result.size() > 0);
-        assertNotNull(result);
+        assertThat(result.size()).isEqualTo(0);
+        assertThat(result).isNotNull();
     }
 
     @Test(expected = RestaurantNotFoundException.class)
