@@ -13,7 +13,7 @@ import utils.GetMockJson;
 
 import java.util.Optional;
 
-import static org.junit.Assert.assertNotNull;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
@@ -38,7 +38,7 @@ public class GetRestaurantOrThrowNotFoundTest {
 
         final var result = getRestaurantOrThrowNotFound.execute(code);
 
-        assertNotNull(result);
+        assertThat(result).isNotNull();
     }
 
     @Test(expected = RestaurantNotFoundException.class)

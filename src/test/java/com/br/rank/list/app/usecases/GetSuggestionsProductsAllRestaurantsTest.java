@@ -3,7 +3,6 @@ package com.br.rank.list.app.usecases;
 import com.br.rank.list.app.rest.ISearchProductsAllRestaurantsRest;
 import com.br.rank.list.app.usecases.impl.GetSuggestionsProductsAllRestaurants;
 import com.br.rank.list.domains.Product;
-import com.br.rank.list.domains.SearchProduct;
 import com.fasterxml.jackson.core.type.TypeReference;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,7 +13,7 @@ import utils.GetMockJson;
 
 import java.util.Collection;
 
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
@@ -30,7 +29,7 @@ public class GetSuggestionsProductsAllRestaurantsTest {
     private final GetMockJson getMockJson = new GetMockJson();
 
     @Test
-    public void testExecute(){
+    public void testExecute() {
         final var search = "Cachorro quente";
 
         final var type = new TypeReference<Collection<Product>>() {
@@ -43,7 +42,7 @@ public class GetSuggestionsProductsAllRestaurantsTest {
 
         final var result = getSuggestionsProductsAllRestaurants.execute(search);
 
-        assertNotNull(result);
-        assertFalse(result.isEmpty());
+        assertThat(result).isNotNull();
+        assertThat(result).isNotEmpty();
     }
 }

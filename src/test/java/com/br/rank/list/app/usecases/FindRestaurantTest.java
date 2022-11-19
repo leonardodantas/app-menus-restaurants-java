@@ -12,7 +12,7 @@ import utils.GetMockJson;
 
 import java.util.Optional;
 
-import static org.junit.Assert.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
@@ -38,8 +38,9 @@ public class FindRestaurantTest {
 
         final var result = findRestaurant.findById(id);
 
-        assertTrue(result.isPresent());
+        assertThat(result.isPresent()).isTrue();
     }
+
     @Test
     public void testFindByCNPJ() {
 
@@ -52,7 +53,7 @@ public class FindRestaurantTest {
 
         final var result = findRestaurant.findByCnpj(id);
 
-        assertTrue(result.isPresent());
+        assertThat(result.isPresent()).isTrue();
     }
 
     @Test
@@ -67,7 +68,7 @@ public class FindRestaurantTest {
 
         final var result = findRestaurant.findByCode(id);
 
-        assertTrue(result.isPresent());
+        assertThat(result.isPresent()).isTrue();
     }
 
 }

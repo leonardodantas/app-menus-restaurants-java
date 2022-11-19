@@ -17,8 +17,7 @@ import utils.GetMockJson;
 
 import java.util.Optional;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
@@ -38,7 +37,7 @@ public class UpdateRestaurantTest {
     private final GetMockJson getMockJson = new GetMockJson();
 
     @Test
-    public void testExecute(){
+    public void testExecute() {
         final var restaurantRequest = getMockJson.execute("requests/restaurant-request", RestaurantRequestJson.class);
         final var restaurant = getMockJson.execute("domains/restaurant-valid", Restaurant.class);
 
@@ -58,12 +57,12 @@ public class UpdateRestaurantTest {
         verify(restaurantRepository, times(1)).save(argumentCaptor.capture());
 
         final var restaurantUpdateCapture = argumentCaptor.getValue();
-        assertNotNull(result);
-        assertEquals(restaurantUpdate.getAddress().getStreet(), restaurantUpdateCapture.getAddress().getStreet());
+        assertThat(result).isNotNull();
+        assertThat(restaurantUpdate.getAddress().getStreet()).isEqualTo(restaurantUpdateCapture.getAddress().getStreet());
     }
 
     @Test(expected = RestaurantNotFoundException.class)
-    public void testRestaurantNotFoundException(){
+    public void testRestaurantNotFoundException() {
         final var restaurantRequest = getMockJson.execute("requests/restaurant-request", RestaurantRequestJson.class);
 
         final var restaurantId = "123";
@@ -73,6 +72,6 @@ public class UpdateRestaurantTest {
 
         final var result = updateRestaurant.execute(restaurantId, RestaurantConverter.toDomain(restaurantRequest));
 
-        assertNotNull(result);
+        assertThat(result).isNotNull();
     }
 }

@@ -15,7 +15,7 @@ import utils.GetMockJson;
 
 import java.util.Optional;
 
-import static org.junit.Assert.assertNotNull;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
@@ -52,7 +52,7 @@ public class OpenAndCloseRestaurantTest {
 
         final var result = openAndCloseRestaurant.execute(id, OpenCloseRestaurant.OPEN);
 
-        assertNotNull(result);
+        assertThat(result).isNotNull();
         verify(restaurantRepository, times(1)).save(restaurantSave);
 
     }
@@ -67,7 +67,7 @@ public class OpenAndCloseRestaurantTest {
 
         final var result = openAndCloseRestaurant.execute(id, OpenCloseRestaurant.CLOSE);
 
-        assertNotNull(result);
+        assertThat(result).isNotNull();
         verify(restaurantRepository, times(1)).save(restaurantSave);
 
     }

@@ -12,6 +12,7 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import utils.GetMockJson;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.*;
 
@@ -43,7 +44,7 @@ public class CreateProductTest {
         final var productSave = createProduct.execute(ProductConverter.toDomain(productRequest));
 
         verify(createProductEvents, times(1)).execute(product);
-        assertNotNull(productSave);
+        assertThat(productSave).isNotNull();
 
     }
 }

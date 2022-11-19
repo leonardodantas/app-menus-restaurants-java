@@ -15,6 +15,7 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import utils.GetMockJson;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
@@ -56,8 +57,8 @@ public class CreatePromotionTest {
 
         final var productExcepted = argumentCaptor.getValue();
 
-        assertNotNull(productSave);
-        assertTrue(productExcepted.isPromotionActive());
+        assertThat(productSave).isNotNull();
+        assertThat(productExcepted.isPromotionActive()).isTrue();
     }
 
     @Test(expected = PromotionAlreadyExistException.class)

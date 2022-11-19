@@ -16,7 +16,9 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.Collection;
 
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
@@ -53,9 +55,9 @@ public class FindAllPromotionsRestaurantNowTest {
         final var promotions = productsInPromotion.stream().map(Product::getPromotion).toList();
         final var dayAndHours = promotions.get(0).getDayAndHours().stream().filter(dayAndHour -> dayAndHour.getDay().equalsIgnoreCase(day)).findFirst();
 
-        assertTrue(dayAndHours.isPresent());
-        assertEquals(7, promotions.size());
-        assertEquals(1, promotions.get(0).getDayAndHours().size());
+        assertThat(dayAndHours.isPresent()).isTrue();
+        assertThat(promotions.size()).isEqualTo(7);
+        assertThat(promotions.get(0).getDayAndHours().size()).isEqualTo(1);
     }
 
     @Test
@@ -71,9 +73,8 @@ public class FindAllPromotionsRestaurantNowTest {
 
         final var productsInPromotion = findAllPromotionsRestaurantNow.execute(code);
 
-        assertNotNull(productsInPromotion);
-        assertTrue(productsInPromotion.isEmpty());
-
+        assertThat(productsInPromotion).isNotNull();
+        assertThat(productsInPromotion).isEmpty();
     }
 
 }

@@ -15,6 +15,7 @@ import utils.GetMockJson;
 
 import java.util.Collection;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.anyInt;
@@ -49,9 +50,8 @@ public class FindPageProductsTest {
 
         final var result = findPageProducts.execute(code, page, size);
 
-        assertNotNull(result);
-        assertTrue(result.getTotalElements() > 0);
-
+        assertThat(result).isNotNull();
+        assertThat(result.getTotalElements()).isGreaterThan(0);
     }
 
 }

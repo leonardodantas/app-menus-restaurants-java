@@ -26,7 +26,7 @@ public class FindPageProducts implements IFindProducts {
     public Page<Product> execute(final String code, final int page, final int size) {
         getRestaurantOrThrowNotFound.execute(code);
         final var productsPage = productRepository.findAllByCode(code, page, size);
-        return new PageImpl<Product>(productsPage.getContent(), PageRequest.of(page, size), productsPage.getTotalElements());
+        return new PageImpl<>(productsPage.getContent(), PageRequest.of(page, size), productsPage.getTotalElements());
     }
 
 }

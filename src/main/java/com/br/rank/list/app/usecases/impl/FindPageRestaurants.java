@@ -25,7 +25,7 @@ public class FindPageRestaurants implements IFindPageRestaurants {
     public Page<Restaurant> execute(final int page, final int size) {
         final var activesRestaurants = restaurantRepository.findActiveRestaurants(page, size);
         final var restaurants = getSortRestaurants(activesRestaurants);
-        return new PageImpl<Restaurant>(restaurants, activesRestaurants.getPageable(), activesRestaurants.getTotalElements());
+        return new PageImpl<>(restaurants, activesRestaurants.getPageable(), activesRestaurants.getTotalElements());
     }
 
     private List<Restaurant> getSortRestaurants(final Page<Restaurant> activesRestaurants) {

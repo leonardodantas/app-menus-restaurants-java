@@ -12,7 +12,7 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import utils.GetMockJson;
 
-import static org.junit.Assert.assertFalse;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
@@ -30,12 +30,13 @@ public class RemoveAllPromotionsTest {
     private ArgumentCaptor<Product> argumentCaptor;
 
     private final GetMockJson getMockJson = new GetMockJson();
+
     @Test
-    public void testExecute(){
+    public void testExecute() {
         final var product = getMockJson.execute("domains/product-with-promotion-valid", Product.class);
         when(getProductOrThrowNotFound.execute(anyString())).thenReturn(product);
 
-        final var productId= "123456";
+        final var productId = "123456";
 
         removeAllPromotions.execute(productId);
 
@@ -43,7 +44,7 @@ public class RemoveAllPromotionsTest {
                 .save(argumentCaptor.capture());
 
         final var productSave = argumentCaptor.getValue();
-        assertFalse(productSave.isPromotionActive());
+        assertThat(productSave.isPromotionActive()).isFalse();
     }
 
 }

@@ -15,7 +15,7 @@ import utils.GetMockJson;
 
 import java.util.Collection;
 
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.when;
 
@@ -45,9 +45,9 @@ public class FindPageRestaurantsTest {
 
         final var result = findPageRestaurants.execute(page, size);
 
-        assertNotNull(result);
-        assertTrue(result.getContent().get(0).isActive());
-        assertFalse(result.getContent().get(3).isActive());
+        assertThat(result).isNotNull();
+        assertThat(result.getContent().get(0).isActive()).isTrue();
+        assertThat(result.getContent().get(3).isActive()).isFalse();
     }
 
 }

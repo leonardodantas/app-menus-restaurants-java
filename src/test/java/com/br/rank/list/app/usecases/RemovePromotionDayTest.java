@@ -14,7 +14,7 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import utils.GetMockJson;
 
-import static org.junit.Assert.assertFalse;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
@@ -46,7 +46,7 @@ public class RemovePromotionDayTest {
         verify(productRepository, times(1)).save(argumentCaptor.capture());
 
         final var productUpdate = argumentCaptor.getValue();
-        assertFalse(productUpdate.isPromotionActive());
+        assertThat(productUpdate.isPromotionActive()).isFalse();
     }
 
     @Test(expected = PromotionNotExistException.class)
@@ -58,10 +58,5 @@ public class RemovePromotionDayTest {
 
         final var productId = "321";
         removePromotionDay.execute(productId, Days.FRIDAY);
-
-//        verify(productRepository, times(1)).save(argumentCaptor.capture());
-//
-//        final var productUpdate = argumentCaptor.getValue();
-//        assertTrue(productUpdate.isPromotionActive());
     }
 }

@@ -2,7 +2,6 @@ package com.br.rank.list.app.usecases;
 
 import com.br.rank.list.app.messages.ISendProductMessage;
 import com.br.rank.list.app.usecases.impl.UpdateProductEvents;
-import com.br.rank.list.domains.Product;
 import com.br.rank.list.domains.RestaurantCode;
 import com.br.rank.list.infra.http.converters.ProductConverter;
 import com.br.rank.list.infra.http.jsons.requests.ProductRequestJson;
@@ -31,7 +30,7 @@ public class UpdateProductEventsTest {
     private final GetMockJson getMockJson = new GetMockJson();
 
     @Test
-    public void testExecute(){
+    public void testExecute() {
         final var productRequest = getMockJson.execute("requests/product-request", ProductRequestJson.class);
         final var product = ProductConverter.toDomain(productRequest);
 

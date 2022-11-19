@@ -13,6 +13,7 @@ import utils.GetMockJson;
 
 import java.util.Collection;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.ArgumentMatchers.anyString;
@@ -42,7 +43,7 @@ public class GetSuggestionsRestaurantsTest {
 
         final var result = getSuggestionsRestaurants.execute(search);
 
-        assertNotNull(result);
-        assertFalse(result.isEmpty());
+        assertThat(result).isNotNull();
+        assertThat(result).isNotEmpty();
     }
 }
