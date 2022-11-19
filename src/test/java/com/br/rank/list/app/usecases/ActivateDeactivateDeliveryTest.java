@@ -7,7 +7,6 @@ import com.br.rank.list.infra.http.converters.DeliveryConverter;
 import com.br.rank.list.infra.http.jsons.requests.DeliveryRequest;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
