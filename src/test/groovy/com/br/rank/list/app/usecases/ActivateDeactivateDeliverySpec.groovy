@@ -12,7 +12,6 @@ class ActivateDeactivateDeliverySpec extends Specification {
 
     def restaurantRepository = Mock(RestaurantRepository)
     def getRestaurantOrThrowNotFound = Mock(IGetRestaurantOrThrowNotFound)
-
     def activateDeactivateDelivery = new ActivateDeactivateDelivery(restaurantRepository, getRestaurantOrThrowNotFound)
 
     def getMockJson = new GetMockJson();

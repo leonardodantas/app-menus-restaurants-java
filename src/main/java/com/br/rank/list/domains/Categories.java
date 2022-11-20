@@ -1,13 +1,12 @@
 package com.br.rank.list.domains;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
 
 @Getter
-@NoArgsConstructor
 public final class Categories implements Serializable {
     private Collection<String> values;
 
@@ -15,12 +14,16 @@ public final class Categories implements Serializable {
         this.values = values;
     }
 
+    private Categories() {
+        this.values = List.of();
+    }
+
     public static Categories from(final Collection<String> categories) {
         final var values = categories.stream().map(String::toUpperCase).toList();
         return new Categories(values);
     }
 
-    public static Categories empty(){
+    public static Categories empty() {
         return new Categories();
     }
 
