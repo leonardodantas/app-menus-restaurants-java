@@ -20,6 +20,6 @@ public class GetSuggestionsProductsAllRestaurants implements IGetSuggestionsProd
 
     @Override
     public Collection<SearchProduct> execute(final String search) {
-        return searchProductsAllRestaurantsRest.execute(search).stream().map(SearchProduct::from).collect(Collectors.toList());
+        return searchProductsAllRestaurantsRest.execute(search).stream().map(SearchProduct::from).toList();
     }
 }
