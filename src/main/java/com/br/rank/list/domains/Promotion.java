@@ -2,7 +2,6 @@ package com.br.rank.list.domains;
 
 import com.br.rank.list.domains.exceptions.TimeBetweenHoursException;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -11,8 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Getter
-@NoArgsConstructor
-public final class  Promotion implements Serializable {
+public final class Promotion implements Serializable {
     private String description;
     private BigDecimal promotionalPrice;
     private Collection<DayAndHour> dayAndHours;
@@ -23,6 +21,12 @@ public final class  Promotion implements Serializable {
         this.dayAndHours = dayAndHours;
 
         this.validateOperationTime();
+    }
+
+    private Promotion() {
+        this.description = "";
+        this.promotionalPrice = BigDecimal.ZERO;
+        this.dayAndHours = List.of();
     }
 
     public static Promotion noPromotion() {

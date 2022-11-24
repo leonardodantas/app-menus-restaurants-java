@@ -33,7 +33,7 @@ public class RemovePromotionDay implements IRemovePromotionDay {
         return product.getPromotion()
                 .getDayAndHours()
                 .stream()
-                .filter(dayAndHour -> dayAndHour.getDay().equals(day))
+                .filter(dayAndHour -> dayAndHour.getDay() == day)
                 .findFirst()
                 .orElseThrow(() -> PromotionNotExistException.from("No promotions for the informed day"));
     }

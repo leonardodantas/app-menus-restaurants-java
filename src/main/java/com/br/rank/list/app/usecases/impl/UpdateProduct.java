@@ -26,10 +26,9 @@ public class UpdateProduct implements IUpdateProduct {
         getRestaurantOrThrowNotFound.execute(product.getCode());
 
         final var productSave = productRepository.findById(id)
-                .map(p -> productRepository.save(product.updateId(p.getId())))
+                .map(p -> productRepository.save(product.withId(p.getId())))
                 .orElseThrow(() -> ProductNotFoundException.from("Product not found"));
 
         updateProductEvents.execute(productSave);
-
     }
 }

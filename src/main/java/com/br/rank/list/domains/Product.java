@@ -23,7 +23,7 @@ public final class Product implements Serializable {
     private boolean promotionActive;
     private Promotion promotion;
 
-    private Product(final String id, final String name, final String code, final BigDecimal price, final Categories categories, final boolean promotionActive, final Promotion promotion) {
+    private Product(final String id, final String code, final String name, final BigDecimal price, final Categories categories, final boolean promotionActive, final Promotion promotion) {
         this.id = id;
         this.code = code;
         this.name = name;
@@ -70,7 +70,7 @@ public final class Product implements Serializable {
 
     public void removePromotionOf(final DayAndHour dayAndHour) {
         this.promotion.getDayAndHours().remove(dayAndHour);
-        if (promotion.getDayAndHours().size() == 0) {
+        if (promotion.getDayAndHours().isEmpty()) {
             this.removePromotion();
         }
     }
@@ -95,7 +95,7 @@ public final class Product implements Serializable {
         this.price = promotion.getPromotionalPrice();
     }
 
-    public Product updateId(final String id) {
+    public Product withId(final String id) {
         return new Product(
                 id,
                 this.code,
@@ -148,7 +148,7 @@ public final class Product implements Serializable {
         }
 
         public Product build() {
-            return new Product(id, name, code, price, categories, promotionActive, promotion);
+            return new Product(id, code, name, price, categories, promotionActive, promotion);
         }
     }
 }

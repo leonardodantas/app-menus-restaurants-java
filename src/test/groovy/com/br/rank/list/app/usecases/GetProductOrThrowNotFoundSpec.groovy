@@ -19,7 +19,7 @@ class GetProductOrThrowNotFoundSpec extends Specification {
         given: "a valid productId"
         def productId = "123"
 
-        and: "a mock product when looking for its id"
+        and: "a mock product when looking for its productId"
         def product = getMockJson.execute("domains/product-valid", Product.class)
         productRepository.findById(_ as String) >> Optional.of(product)
 
@@ -37,7 +37,7 @@ class GetProductOrThrowNotFoundSpec extends Specification {
         given: "a valid productId"
         def productId = "123"
 
-        and: "a optional empty when looking for its id"
+        and: "a optional empty when looking for its productId"
         productRepository.findById(_ as String) >> Optional.empty()
 
         when: "get product by productId"

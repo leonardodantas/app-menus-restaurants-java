@@ -49,7 +49,7 @@ public class UpdateProductTest {
                 .thenReturn(Optional.of(product));
 
         when(productRepository.save(any()))
-                .thenReturn(product.updateId(productId));
+                .thenReturn(product.withId(productId));
 
         updateProduct.execute(productId, ProductConverter.toDomain(productRequest));
 

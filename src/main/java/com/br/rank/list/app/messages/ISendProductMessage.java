@@ -4,5 +4,5 @@ import com.br.rank.list.domains.Product;
 
 public interface ISendProductMessage {
 
-    void execute(Product product);
+    void execute(final Product product);
 }

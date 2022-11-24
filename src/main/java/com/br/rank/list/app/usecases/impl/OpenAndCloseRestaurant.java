@@ -15,7 +15,7 @@ public class OpenAndCloseRestaurant implements IOpenAndCloseRestaurant {
         this.restaurantRepository = restaurantRepository;
     }
 
-    public Restaurant execute(final String id, OpenCloseRestaurant openCloseRestaurant) {
+    public Restaurant execute(final String id, final OpenCloseRestaurant openCloseRestaurant) {
         return restaurantRepository.findById(id).map(restaurant -> {
             final var restaurantUpdated = openCloseRestaurant.execute(restaurant);
             return restaurantRepository.save(restaurantUpdated);

@@ -7,7 +7,6 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import utils.GetMockJson;
 
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -24,8 +23,6 @@ public class RemoveProductTest {
     private IGetRestaurantOrThrowNotFound getRestaurantOrThrowNotFound;
     @Mock
     private IRemoveProductEvents removeProductEvents;
-
-    private final GetMockJson getMockJson = new GetMockJson();
 
     @Test
     public void testExecute() {
