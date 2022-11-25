@@ -28,7 +28,7 @@ public class RemoveEmptyCategoriesListener {
     public void listen(final RestaurantCode restaurantCode) {
         final var restaurantCategories = restaurantCategoriesRepository
                 .findByCode(restaurantCode.code())
-                .orElseThrow(() -> RestaurantNotFoundException.from("Restaurant not found"));
+                .orElseThrow(() -> new RestaurantNotFoundException("Restaurant not found"));
 
         final var categories = getCategoriesClean(restaurantCode, restaurantCategories);
 

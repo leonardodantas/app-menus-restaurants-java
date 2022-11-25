@@ -35,6 +35,6 @@ public class RemovePromotionDay implements IRemovePromotionDay {
                 .stream()
                 .filter(dayAndHour -> dayAndHour.getDay() == day)
                 .findFirst()
-                .orElseThrow(() -> PromotionNotExistException.from("No promotions for the informed day"));
+                .orElseThrow(() -> new PromotionNotExistException("No promotions for the informed day"));
     }
 }

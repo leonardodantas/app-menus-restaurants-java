@@ -54,7 +54,7 @@ public final class Product implements Serializable {
                         .anyMatch(newPromotions -> newPromotions.getDay().equals(existingPromotions.getDay())))
                 .findFirst()
                 .ifPresent(p -> {
-                    throw PromotionAlreadyExistException.from("Promotion already exists to day " + p.getDay());
+                    throw new PromotionAlreadyExistException("Promotion already exists to day " + p.getDay());
                 });
     }
 

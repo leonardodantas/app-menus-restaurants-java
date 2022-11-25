@@ -2,8 +2,8 @@ package com.br.rank.list.app.usecases.impl;
 
 import com.br.rank.list.app.exceptions.ProductNotFoundException;
 import com.br.rank.list.app.repositories.IProductRepository;
-import com.br.rank.list.app.usecases.IGetRestaurantOrThrowNotFound;
 import com.br.rank.list.app.usecases.IGetProductOrThrowNotFound;
+import com.br.rank.list.app.usecases.IGetRestaurantOrThrowNotFound;
 import com.br.rank.list.domains.Product;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +21,7 @@ public class GetProductOrThrowNotFound implements IGetProductOrThrowNotFound {
     @Override
     public Product execute(final String productId) {
         final var product = productRepository.findById(productId)
-                .orElseThrow(() -> ProductNotFoundException.from("Product not found"));
+                .orElseThrow(() -> new ProductNotFoundException("Product not found"));
 
         getRestaurantOrThrowNotFound.execute(product.getCode());
 

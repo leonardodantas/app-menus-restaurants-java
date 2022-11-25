@@ -18,6 +18,6 @@ public class GetRestaurantOrThrowNotFound implements IGetRestaurantOrThrowNotFou
     @Override
     public Restaurant execute(final String code) {
         return restaurantRepository.findByCode(code)
-                .orElseThrow(() -> RestaurantNotFoundException.from("Restaurant not found"));
+                .orElseThrow(() -> new RestaurantNotFoundException("Restaurant not found"));
     }
 }

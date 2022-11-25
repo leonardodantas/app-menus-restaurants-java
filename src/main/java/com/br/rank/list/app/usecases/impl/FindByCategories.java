@@ -30,7 +30,7 @@ public class FindByCategories implements IFindByCategories {
         getRestaurantOrThrowNotFound.execute(code);
 
         final var restaurantCategories = restaurantCategoriesRepository.findByCode(code)
-                .orElseThrow(() -> RestaurantNotFoundException.from(String.format("Restaurant code %s not found", code)));
+                .orElseThrow(() -> new RestaurantNotFoundException(String.format("Restaurant code %s not found", code)));
 
         validateCategories(categories, restaurantCategories);
         return productRepository.findAllByCodeAndCategories(code, categories);

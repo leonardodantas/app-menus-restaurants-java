@@ -21,7 +21,7 @@ public class RemoveRestaurant implements IRemoveRestaurant {
                     restaurant.disable();
                     restaurantRepository.save(restaurant);
                 }, () -> {
-                    throw RestaurantNotFoundException.from("Restaurant not found for removal");
+                    throw new RestaurantNotFoundException("Restaurant not found for removal");
                 });
     }
 }

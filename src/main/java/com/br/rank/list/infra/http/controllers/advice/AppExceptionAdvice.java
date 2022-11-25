@@ -1,6 +1,5 @@
 package com.br.rank.list.infra.http.controllers.advice;
 
-import com.br.rank.list.app.exceptions.CodeNotFoundException;
 import com.br.rank.list.app.exceptions.PromotionAlreadyExistException;
 import com.br.rank.list.app.exceptions.RestaurantNotFoundException;
 import com.br.rank.list.domains.exceptions.TimeBetweenHoursException;
@@ -9,7 +8,6 @@ import com.br.rank.list.infra.http.controllers.advice.responses.ErrorsResponse;
 import com.br.rank.list.infra.http.controllers.advice.responses.MessageError;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -25,31 +23,25 @@ public class AppExceptionAdvice {
     }
 
     @ExceptionHandler(RestaurantNotFoundException.class)
-    public ResponseEntity<?> handleRestaurantNotFoundException(final RestaurantNotFoundException exception) {
+    public ResponseEntity<ErrorResponse> handleRestaurantNotFoundException(final RestaurantNotFoundException exception) {
         final var response = ErrorResponse.from(exception);
-        return new ResponseEntity(response, HttpStatus.BAD_REQUEST);
-    }
-
-    @ExceptionHandler(CodeNotFoundException.class)
-    public ResponseEntity<?> handleCodeNotFoundException(final CodeNotFoundException exception) {
-        final var response = ErrorResponse.from(exception);
-        return new ResponseEntity(response, HttpStatus.BAD_REQUEST);
+        return ResponseEntity.badRequest().body(response);
     }
 
     @ExceptionHandler(PromotionAlreadyExistException.class)
-    public ResponseEntity<?> handlePromotionAlreadyExistException(final PromotionAlreadyExistException exception) {
+    public ResponseEntity<ErrorResponse> handlePromotionAlreadyExistException(final PromotionAlreadyExistException exception) {
         final var response = ErrorResponse.from(exception);
-        return new ResponseEntity(response, HttpStatus.BAD_REQUEST);
+        return ResponseEntity.badRequest().body(response);
     }
 
     @ExceptionHandler(TimeBetweenHoursException.class)
-    public ResponseEntity<?> handleTimeBetweenHoursException(final TimeBetweenHoursException exception) {
+    public ResponseEntity<ErrorResponse> handleTimeBetweenHoursException(final TimeBetweenHoursException exception) {
         final var response = ErrorResponse.from(exception);
-        return new ResponseEntity(response, HttpStatus.BAD_REQUEST);
+        return ResponseEntity.badRequest().body(response);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<?> handleMethodArgumentNotValidException(final MethodArgumentNotValidException exception) {
+    public ResponseEntity<ErrorsResponse> handleMethodArgumentNotValidException(final MethodArgumentNotValidException exception) {
         final var fields = exception.getBindingResult().getFieldErrors();
 
         final var errors = fields.stream()
@@ -59,6 +51,6 @@ public class AppExceptionAdvice {
                 .toList();
 
         final var response = ErrorsResponse.from(errors);
-        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+        return ResponseEntity.badRequest().body(response);
     }
 }

@@ -19,6 +19,6 @@ public class OpenAndCloseRestaurant implements IOpenAndCloseRestaurant {
         return restaurantRepository.findById(id).map(restaurant -> {
             final var restaurantUpdated = openCloseRestaurant.execute(restaurant);
             return restaurantRepository.save(restaurantUpdated);
-        }).orElseThrow(() -> RestaurantNotFoundException.from("Restaurant not found"));
+        }).orElseThrow(() -> new RestaurantNotFoundException("Restaurant not found"));
     }
 }

@@ -18,7 +18,7 @@ public class UpdateRestaurant implements IUpdateRestaurant {
     @Override
     public Restaurant execute(final String id, final Restaurant restaurant) {
         final var restaurantToUpdate = restaurantRepository.findById(id)
-                .orElseThrow(() -> RestaurantNotFoundException.from("Restaurant not found"));
+                .orElseThrow(() -> new RestaurantNotFoundException("Restaurant not found"));
 
         restaurantToUpdate.updateFrom(restaurant);
 

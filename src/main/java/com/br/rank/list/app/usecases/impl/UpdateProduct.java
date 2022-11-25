@@ -27,7 +27,7 @@ public class UpdateProduct implements IUpdateProduct {
 
         final var productSave = productRepository.findById(id)
                 .map(p -> productRepository.save(product.withId(p.getId())))
-                .orElseThrow(() -> ProductNotFoundException.from("Product not found"));
+                .orElseThrow(() -> new ProductNotFoundException("Product not found"));
 
         updateProductEvents.execute(productSave);
     }
