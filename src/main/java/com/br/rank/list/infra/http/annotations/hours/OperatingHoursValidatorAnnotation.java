@@ -12,10 +12,6 @@ public class OperatingHoursValidatorAnnotation implements ConstraintValidator<Op
 
     @Override
     public boolean isValid(OperatingHoursRequestJson value, ConstraintValidatorContext context) {
-        if (Objects.isNull(value)) {
-            return false;
-        }
-        return true;
-//        return value.startTime().compareTo(value.endTime()) < 0;
+        return !Objects.isNull(value);
     }
 }

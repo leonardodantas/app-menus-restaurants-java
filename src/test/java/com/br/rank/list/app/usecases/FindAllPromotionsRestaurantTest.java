@@ -41,7 +41,6 @@ public class FindAllPromotionsRestaurantTest {
 
         final var restaurantsWithPromotion = findAllPromotionsRestaurant.execute(code);
 
-        assertThat(restaurantsWithPromotion).isNotNull();
         assertThat(restaurantsWithPromotion).isNotEmpty();
     }
 }

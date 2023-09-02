@@ -73,7 +73,6 @@ public class FindAllPromotionsRestaurantNowTest {
 
         final var productsInPromotion = findAllPromotionsRestaurantNow.execute(code);
 
-        assertThat(productsInPromotion).isNotNull();
         assertThat(productsInPromotion).isEmpty();
     }
 

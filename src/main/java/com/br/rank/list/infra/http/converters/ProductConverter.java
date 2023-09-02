@@ -4,7 +4,10 @@ import com.br.rank.list.domains.Categories;
 import com.br.rank.list.domains.Product;
 import com.br.rank.list.infra.http.jsons.requests.CategoriesRequestJson;
 import com.br.rank.list.infra.http.jsons.requests.ProductRequestJson;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ProductConverter {
 
     public static Product toDomain(final ProductRequestJson json) {

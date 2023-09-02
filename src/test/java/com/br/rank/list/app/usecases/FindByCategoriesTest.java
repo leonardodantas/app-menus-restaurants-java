@@ -66,7 +66,7 @@ public class FindByCategoriesTest {
 
         final var result = findByCategories.execute(code, Categories.from(categoriesRequest.values()));
 
-        assertThat(result.size()).isEqualTo(0);
+        assertThat(result.size()).isZero();
         assertThat(result).isNotNull();
     }
 

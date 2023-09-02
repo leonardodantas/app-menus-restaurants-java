@@ -24,6 +24,6 @@ public class FindPageRestaurantsController {
     @ApiOperation(tags = "Restaurants", value = "Find page restaurants")
     public PageResponse<ActiveRestaurantsResponse> execute(@RequestParam(defaultValue = "0") final int page, @RequestParam(defaultValue = "20") final int size) {
         final var response = findPageRestaurants.execute(page, size).map(ActiveRestaurantsResponse::from);
-        return new PageResponse<ActiveRestaurantsResponse>(response.getContent(), page, size, response.getTotalElements(),response.getTotalPages());
+        return new PageResponse<>(response.getContent(), page, size, response.getTotalElements(),response.getTotalPages());
     }
 }

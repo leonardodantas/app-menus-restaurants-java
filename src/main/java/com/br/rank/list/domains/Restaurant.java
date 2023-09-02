@@ -36,7 +36,6 @@ public final class Restaurant implements Serializable {
         this.deliveryAvailable = deliveryAvailable;
         this.open = open;
         this.active = active;
-
         this.validateOperationTime();
     }
 
@@ -57,7 +56,7 @@ public final class Restaurant implements Serializable {
     }
 
     public String getCnpj() {
-        return cnpj.getCnpj();
+        return cnpj.getValue();
     }
 
     public void disable() {

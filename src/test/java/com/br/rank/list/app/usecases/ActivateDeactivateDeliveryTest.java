@@ -55,7 +55,6 @@ public class ActivateDeactivateDeliveryTest {
     @Test
     public void testActivate() {
         final var result = activateDeactivateDelivery.activate(code, DeliveryConverter.toDomain(deliveryRequest));
-        assertThat(result).isNotNull();
         assertThat(result).isEqualTo(restaurant.getDelivery());
     }
 

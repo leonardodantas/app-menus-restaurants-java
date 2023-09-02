@@ -5,7 +5,10 @@ import com.br.rank.list.infra.database.documents.AddressDocument;
 import com.br.rank.list.infra.database.documents.DeliveryDocument;
 import com.br.rank.list.infra.database.documents.OperatingHoursDocument;
 import com.br.rank.list.infra.database.documents.RestaurantDocument;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class RestaurantConverter {
 
     public static Restaurant toDomain(final RestaurantDocument document) {

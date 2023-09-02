@@ -51,7 +51,7 @@ public class FindPageProductsTest {
         final var result = findPageProducts.execute(code, page, size);
 
         assertThat(result).isNotNull();
-        assertThat(result.getTotalElements()).isGreaterThan(0);
+        assertThat(result.getTotalElements()).isPositive();
     }
 
 }

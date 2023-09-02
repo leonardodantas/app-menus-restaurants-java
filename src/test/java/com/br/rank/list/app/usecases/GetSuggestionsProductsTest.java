@@ -44,7 +44,6 @@ public class GetSuggestionsProductsTest {
 
         final var result = getSuggestionsProducts.execute(code, search);
 
-        assertThat(result).isNotNull();
         assertThat(result).isNotEmpty();
     }
 }

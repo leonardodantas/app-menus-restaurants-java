@@ -77,7 +77,7 @@ public final class Product implements Serializable {
 
     public BigDecimal getPrice() {
         final var dayAndHour = checkForPromotion();
-        dayAndHour.ifPresent((dH) -> this.applyPromotion());
+        dayAndHour.ifPresent(dH -> this.applyPromotion());
         return price;
     }
 

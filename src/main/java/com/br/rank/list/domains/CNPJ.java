@@ -1,20 +1,18 @@
 package com.br.rank.list.domains;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
 @Getter
-@NoArgsConstructor
 public final class CNPJ implements Serializable {
 
-    private String cnpj;
-    private String cnpjOnlyNumbers;
+    private String value;
+    private String onlyNumbers;
 
-    private CNPJ(final String cnpj) {
-        this.cnpj = cnpj;
-        this.cnpjOnlyNumbers = cnpj.replaceAll("\\D", "");
+    private CNPJ(final String value) {
+        this.value = value;
+        this.onlyNumbers = value.replaceAll("\\D", "");
     }
 
     public static CNPJ from(final String cnpj) {

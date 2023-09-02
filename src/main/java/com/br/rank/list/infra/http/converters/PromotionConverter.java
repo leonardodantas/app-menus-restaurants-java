@@ -4,9 +4,12 @@ import com.br.rank.list.domains.DayAndHour;
 import com.br.rank.list.domains.Days;
 import com.br.rank.list.domains.Promotion;
 import com.br.rank.list.infra.http.jsons.requests.PromotionRequestJson;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 import java.util.Collection;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class PromotionConverter {
 
     public static Promotion toDomain(final PromotionRequestJson json) {
