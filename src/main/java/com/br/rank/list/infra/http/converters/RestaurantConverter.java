@@ -8,7 +8,10 @@ import com.br.rank.list.infra.http.jsons.requests.AddressRequestJson;
 import com.br.rank.list.infra.http.jsons.requests.OperatingHoursRequestJson;
 import com.br.rank.list.infra.http.jsons.requests.RestaurantRequestJson;
 import com.br.rank.list.infra.http.jsons.requests.RestaurantUpdateRequestJson;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class RestaurantConverter {
 
     public static Restaurant toDomain(final RestaurantRequestJson json) {

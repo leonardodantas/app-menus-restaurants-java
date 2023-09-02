@@ -43,7 +43,6 @@ public class GetSuggestionsRestaurantsTest {
 
         final var result = getSuggestionsRestaurants.execute(search);
 
-        assertThat(result).isNotNull();
         assertThat(result).isNotEmpty();
     }
 }

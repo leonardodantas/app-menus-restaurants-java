@@ -2,6 +2,7 @@ package com.br.rank.list.infra.kafka.consumers;
 
 import com.br.rank.list.app.usecases.IUpdateSearchInformation;
 import com.br.rank.list.domains.SearchInformation;
+import com.br.rank.list.infra.exceptions.ConsumerException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -24,8 +25,8 @@ public class UpdateSearchInformationConsumer {
         try {
             final var search = objectMapper.readValue(message, SearchInformation.class);
             searchInformation.execute(search);
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
+        } catch (final Exception e) {
+            throw new ConsumerException(e);
         }
     }
 }

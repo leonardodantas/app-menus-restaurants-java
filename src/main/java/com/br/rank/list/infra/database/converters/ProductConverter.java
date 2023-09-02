@@ -3,7 +3,10 @@ package com.br.rank.list.infra.database.converters;
 import com.br.rank.list.domains.*;
 import com.br.rank.list.infra.database.documents.ProductDocument;
 import com.br.rank.list.infra.database.documents.PromotionDocument;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ProductConverter {
 
     public static Product toDomain(final ProductDocument productDocument) {

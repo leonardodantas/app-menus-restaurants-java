@@ -31,6 +31,6 @@ public class FindPageProductsController {
                                                      @RequestParam(defaultValue = "0") final int page,
                                                      @RequestParam(defaultValue = "20") final int size) {
         final var response = findProducts.execute(code, page, size).map(ProductResponseJson::from);
-        return new PageResponse<ProductResponseJson>(response.getContent(), page, size, response.getTotalElements(), response.getTotalPages());
+        return new PageResponse<>(response.getContent(), page, size, response.getTotalElements(), response.getTotalPages());
     }
 }

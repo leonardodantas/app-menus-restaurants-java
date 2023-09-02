@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class RemoveProductProducer implements IRemoveProductMessage {
     private final KafkaTemplate<String, String> kafkaTemplate;
-    private final static String REMOVE_TOPIC_KAFKA = "remove.product.meiliSearch";
+    private static final String REMOVE_TOPIC_KAFKA = "remove.product.meiliSearch";
 
     public RemoveProductProducer(final KafkaTemplate<String, String> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;

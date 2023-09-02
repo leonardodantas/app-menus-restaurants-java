@@ -42,7 +42,6 @@ public class GetSuggestionsProductsAllRestaurantsTest {
 
         final var result = getSuggestionsProductsAllRestaurants.execute(search);
 
-        assertThat(result).isNotNull();
         assertThat(result).isNotEmpty();
     }
 }

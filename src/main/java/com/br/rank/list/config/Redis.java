@@ -23,7 +23,7 @@ public class Redis {
 
     @Bean
     public RedisCacheManagerBuilderCustomizer redisCacheManagerBuilderCustomizer() {
-        return (builder) -> builder
+        return builder -> builder
                 .withCacheConfiguration("restaurants",
                         RedisCacheConfiguration.defaultCacheConfig().entryTtl(Duration.ofMinutes(15)))
                 .withCacheConfiguration("productsInPromotion",
